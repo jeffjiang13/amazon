@@ -2,7 +2,7 @@ import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
 // https://console.firebase.google.com/u/1/project/amzn-2/settings/serviceaccounts/adminsdk
-var serviceAccount = require("../../../permissions.json");
+var serviceAccount = require(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
 const app = !admin.apps.length
   ? admin.initializeApp({
