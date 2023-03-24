@@ -20,7 +20,7 @@ function Header() {
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
             onClick={() => router.push("/")}
-            src={"/amazon-png-logo-vector-1.png"}
+            src="/amazon-png-logo-vector-1.png"
             width={150}
             height={40}
             objectFit="contain"
