@@ -2,6 +2,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async (req, res) => {
+  try {
   const { items, email } = req.body;
 
   const transformedItems = items.map((item) => ({
@@ -34,7 +35,10 @@ export default async (req, res) => {
   });
 
   res.status(200).json({ id: session.id });
+  } catch (error) {
+    console.error("Error creating checkout session: ", error);
+    res.status(500).json({ message: "An error occurred while creating the checkout session." });
+  }
 };
-
 // Use this to test the API and create a session ID
 // curl -X POST -is "http://localhost:3000/api/create-checkout-session" -d ""
