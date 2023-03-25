@@ -89,7 +89,6 @@ function Checkout() {
                 disabled={!session}
                 onClick={createCheckoutSession}
                 role="link"
-                s
                 className={`button mt-2 ${
                   !session &&
                   "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"
