@@ -24,7 +24,7 @@ function Checkout() {
       "/api/create-checkout-session",
       {
         items,
-        email: session.user.email,
+        email: session?.user?.email,
       }
     );
 
