@@ -3220,10 +3220,10 @@
     "postcss" "^8.2.1"
     "postcss-selector-parser" "^6.0.2"
 
-"qs@^6.6.0":
-  "integrity" "sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg=="
-  "resolved" "https://registry.npmjs.org/qs/-/qs-6.10.1.tgz"
-  "version" "6.10.1"
+"qs@^6.10.3":
+  "integrity" "sha512-0wsrzgTz/kAVIeuxSjnpGC56rzYtr6JT/2BwEvMaPhFIoYa1aGO8LbzuU1R0uUYQkLpWBTOj0l/CLAJB64J6nQ=="
+  "resolved" "https://registry.npmjs.org/qs/-/qs-6.11.1.tgz"
+  "version" "6.11.1"
   dependencies:
     "side-channel" "^1.0.4"
 
@@ -3712,13 +3712,13 @@
   dependencies:
     "ansi-regex" "^5.0.0"
 
-"stripe@^8.148.0":
-  "integrity" "sha512-xBpYJxMVGaZFrF3r2cHytiZOTwQC/i/7bx5ttVdb4KsK/9xYuXclQZkOwMZVxTGhKWnpoLc1gOFWa0CZE1D8uA=="
-  "resolved" "https://registry.npmjs.org/stripe/-/stripe-8.148.0.tgz"
-  "version" "8.148.0"
+"stripe@^8.222.0":
+  "integrity" "sha512-hrA79fjmN2Eb6K3kxkDzU4ODeVGGjXQsuVaAPSUro6I9MM3X+BvIsVqdphm3BXWfimAGFvUqWtPtHy25mICY1w=="
+  "resolved" "https://registry.npmjs.org/stripe/-/stripe-8.222.0.tgz"
+  "version" "8.222.0"
   dependencies:
     "@types/node" ">=8.1.0"
-    "qs" "^6.6.0"
+    "qs" "^6.10.3"
 
 "stubs@^3.0.0":
   "integrity" "sha1-6NK6H6nJBXAwPAMLaQD31fiavls= sha512-PdHt7hHUJKxvTCgbKX9C1V/ftOcjJQgz8BZwNfV5c4B6dcGqlpelTbJ999jBGZ2jYiPAwcX5dP6oBwVlBlUbxw=="
