@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
-import { Search, ShoppingCart, MenuIcon } from "../icons";
+import { Search, ShoppingCart, MenuIcon } from "../../icons";
 import { selectItems } from "../slices/basketSlice";
 
 const Header = () => {
