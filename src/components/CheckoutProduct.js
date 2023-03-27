@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../slices/basketSlice";
 import Image from "next/image";
-import { StarIcon } from "@heroicons/react/solid";
+import { StarIcon } from "../icons";
 import Currency from "react-currency-formatter";
 
 function CheckoutProduct({
