@@ -1,3 +1,6 @@
+  <div align="center">
+
+
   <img src="public/amazon-png-logo-vector-1.png" width='400' alt="logo" />
 
   # Amazon 2.0 with NEXT.JS!
