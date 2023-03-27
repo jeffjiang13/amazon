@@ -6,7 +6,7 @@ import Currency from "react-currency-formatter";
 import CheckoutProduct from "../components/CheckoutProduct";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 
