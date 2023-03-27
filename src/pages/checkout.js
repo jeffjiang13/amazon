@@ -12,7 +12,7 @@ import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 
-const striprPromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+const striprPromise = loadStripe(process.env.stripe_public_key);
 
 const Checkout = () => {
   const items = useSelector(selectItems);
