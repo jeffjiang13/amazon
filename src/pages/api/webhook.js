@@ -1,28 +1,29 @@
 import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
-// https://console.firebase.google.com/u/1/project/amzn-2/settings/serviceaccounts/adminsdk
 const serviceAccount = require("../../../permissions.json");
 
 const fullFillOrder = async (session) => {
   console.log("Full fill order", session);
 
-  return app
-    .firestore()
-    .collection("users")
-    .doc(session.metadata.email)
-    .collection("orders")
-    .doc(session.id)
-    .set({
-      amount: session.amount_total / 100,
-      amount_shipping: session.total_details.amount_shipping / 100 || 30,
-      images: JSON.parse(session.metadata.images),
-      timeStamp: admin.firestore.FieldValue.serverTimestamp(),
-    })
-    .then(() => {
-      console.log(`suess: oreder ${session.id} had been added to the DB`);
-    })
-    .catch((err) => console.log("Erreur a l'insertion !", err.message));
+  try {
+    await app
+      .firestore()
+      .collection("users")
+      .doc(session.metadata.email)
+      .collection("orders")
+      .doc(session.id)
+      .set({
+        amount: session.amount_total / 100,
+        amount_shipping: session.total_details.amount_shipping / 100 || 30,
+        images: JSON.parse(session.metadata.images),
+        timeStamp: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+    console.log(`Success: order ${session.id} has been added to the DB`);
+  } catch (err) {
+    console.log("Error during insertion!", err.message);
+  }
 };
 
 const app = !admin.apps.length
@@ -32,39 +33,42 @@ const app = !admin.apps.length
   : admin.app();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
-const endpointSecect = process.env.STRIPE_SIGNING_SECRET;
+const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 export default async (req, res) => {
   if (req.method === "POST") {
-    const requestBuffer = await buffer(req);
-    const payloade = requestBuffer.toString();
-    const sig = req.headers["stripe-signature"];
-
-    let event;
-
     try {
-      event = stripe.webhooks.constructEvent(payloade, sig, endpointSecect);
+      const requestBuffer = await buffer(req);
+      const payload = requestBuffer.toString();
+      const sig = req.headers["stripe-signature"];
+
+      const event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+
+      if (event.type === "checkout.session.completed") {
+        const session = event.data.object;
+
+        try {
+          await fullFillOrder(session);
+          res.status(200).send("Success");
+        } catch (err) {
+          res.status(400).send(`Webhook Error: ${err.message}`);
+        }
+      } else {
+        res.status(400).send("Unsupported event type");
+      }
     } catch (error) {
       console.log("Error", error.message);
-      return res.status(400).send(`webhook error: ${error.message}`);
+      res.status(400).send(`webhook error: ${error.message}`);
     }
-
-    // handle the chckout session
-
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object;
-
-      return fullFillOrder(session)
-        .then(() => res.status(200))
-        .catch((err) => res.status(400).send(`Webhook Error: ${err.message}`));
-    }
+  } else {
+    res.setHeader("Allow", "POST");
+    res.status(405).end("Method Not Allowed");
   }
 };
 
 export const config = {
   api: {
-    bodyParser: false, // Useless for webhooks
+    bodyParser: false, // Not needed for webhooks
     externalResolver: true,
   },
 };
