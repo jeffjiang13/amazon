@@ -1,4 +1,4 @@
-import { Search, ShoppingCart, MenuIcon } from "../icons";
+import { Search, ShoppingCart, MenuIcon } from "../../icons";
 
 import Image from "next/image";
 import { useSelector } from "react-redux";

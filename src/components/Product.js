@@ -1,4 +1,4 @@
-import { StarIcon } from "../icons";
+import { StarIcon } from "../../icons";
 import Image from "next/image";
 import { useState } from "react";
 import Currency from "react-currency-formatter";
