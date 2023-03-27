@@ -2,7 +2,7 @@ import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
 // https://console.firebase.google.com/u/1/project/amzn-2/settings/serviceaccounts/adminsdk
-const serviceAccount = require(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+const serviceAccount = require("../../../permissions.json");
 
 const fullFillOrder = async (session) => {
   console.log("Full fill order", session);
