@@ -7,7 +7,8 @@ const firebaseConfig = {
   projectId: "jj-189db",
   storageBucket: "jj-189db.appspot.com",
   messagingSenderId: "22051823632",
-  appId: "1:22051823632:web:05c61388d312c082dd2a95"
+  appId: "1:22051823632:web:05c61388d312c082dd2a95",
+  measurementId: "G-RHP61M549H"
 };
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
