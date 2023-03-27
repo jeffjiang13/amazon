@@ -12,7 +12,7 @@ import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 
-const striprPromise = loadStripe(process.env.stripe_public_key);
+const striprPromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
   const items = useSelector(selectItems);
@@ -54,7 +54,7 @@ const Checkout = () => {
       <main className="lg:flex max-w-screen-2xl mx-auto">
         <div className="flex-grow m-5 shadow-sm">
           <Image
-            src="/https://links.papareact.com/ikj"
+            src="https://links.papareact.com/ikj"
             width={1020}
             height={250}
             className="object-contain"
