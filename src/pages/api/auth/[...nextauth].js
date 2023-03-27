@@ -13,6 +13,7 @@ export default NextAuth({
 
   callbacks: {
     async session({ session, token, user }) {
+      console.log('Inside session callback', { session, token, user });
       session.user.username = session?.user?.name
         .split(" ")
         .join("")
