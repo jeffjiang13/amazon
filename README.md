@@ -1,3 +1,19 @@
+  <img src="public/amazon-png-logo-vector-1.png" width='400' alt="logo" />
+
+  # Amazon 2.0 with NEXT.JS!
+
+  <p>
+Amazon 2.0 with NEXT.JS! (ReactJS, Webhooks, complete Stripe Payments Checkout, Cloud Firestore database, NextAuth, Redux, Google Authentication, Add to Basket Functionality, Tailwind CSS)
+  </p>
+
+
+<!-- Badges -->
+
+<a href="https://jeff-amazon.vercel.app/" target="_blank">![](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)</a>
+
+
+
+
 # Redux Toolkit example
 
 This example shows how to integrate Next.js with [Redux Toolkit](https://redux-toolkit.js.org).
