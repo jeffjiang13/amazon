@@ -5,16 +5,16 @@ export default async (req, res) => {
   const { items, email } = req.body;
 
   const transformedItems = items.map((item) => ({
-    price_data: {
-      currency: "usd",
-      product_data: {
-        images: [item.image],
-        name: item.title,
-      },
-      unit_amount: item.price * 100,
-    },
-    description: item.description,
     quantity: 1,
+    price_data: {
+      currency: "gbp",
+      unit_amount: item.price * 100,
+      product_data: {
+        name: item.title,
+        description: item.description,
+        images: [item.image],
+      },
+    },
   }));
 
   const session = await stripe.checkout.sessions.create({
