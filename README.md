@@ -1,21 +1,24 @@
   <div align="center">
 
-
+ <br />
   <img src="public/amazon-png-logo-vector-1.png" width='400' alt="logo" />
 
   # Amazon 2.0 with NEXT.JS!
 
+
+ <br />
   <p>
 Amazon 2.0 with NEXT.JS! (ReactJS, Webhooks, complete Stripe Payments Checkout, Cloud Firestore database, NextAuth, Redux, Google Authentication, Add to Basket Functionality, Tailwind CSS)
   </p>
   <br />
-<h4>
-    <a href="hhttps://jeff-amazon.vercel.app/">View Demo</a>
-</h4>
+<h3>
+    <a href="https://jeff-amazon.vercel.app/">View Demo</a>
+</h3>
 </div>
 
 <!-- Badges -->
 
+ <br />
 <a href="https://jeff-amazon.vercel.app/" target="_blank">![](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)</a>
 
 
