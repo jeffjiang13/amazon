@@ -19,6 +19,7 @@ Amazon 2.0 with NEXT.JS! (ReactJS, Webhooks, complete Stripe Payments Checkout, 
 <!-- Badges -->
 
  <br />
+
 <a href="https://jeff-amazon.vercel.app/" target="_blank">![](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)</a>
 
 
