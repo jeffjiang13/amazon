@@ -57,7 +57,7 @@ const Checkout = () => {
             src="https://links.papareact.com/ikj"
             width={1020}
             height={250}
-            className="object-contain"
+            className="contain"
           />
 
           <div className="flex flex-col p-5 space-y-10 bg-white">
