@@ -1,3 +1,11 @@
 .productCard {
   height: 90%;
 }
+/* Modify the .productContainer class in your CSS file */
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Add this line to center the content */
+  height: 100%;
+}
