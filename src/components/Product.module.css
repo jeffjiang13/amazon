@@ -1,5 +1,5 @@
 .productCard {
-  height: 90%;
+  height: 100%;
 }
 /* Modify the .productContainer class in your CSS file */
 .productContainer {
@@ -13,5 +13,5 @@
 .buttonContainer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 80%;
 }
