@@ -6,6 +6,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center; /* Add this line to center the content */
   height: 100%;
+  position: relative; /* Add this line to position the button relative to this container */
+}
+/* Add a new class for the button in your CSS file */
+.buttonContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
