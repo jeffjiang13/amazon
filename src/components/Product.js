@@ -36,7 +36,7 @@ function Product({ id, title, price, description, category, image }) {
   return (
     <Link href={`/products/${id}`}>
       <a>
-        <div className="relative flex flex-col m-5 bg-white z-30 p-10">
+      <div className="relative flex flex-col m-5 bg-white z-30 p-10 w-[300px] h-[450px]">
           <p className="absolute top-2 right-2 text-xs italic text-gray-400">
             {category}
           </p>
