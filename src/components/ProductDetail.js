@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addToBasket } from '../slices/basketSlice';
 import Image from 'next/image';
 import styles from './ProductDetail.module.css';
+import Currency from "react-currency-formatter";
 
 function ProductDetail({ product }) {
   const dispatch = useDispatch();
@@ -34,9 +35,18 @@ function ProductDetail({ product }) {
         />
       </div>
       <div className={styles.productDetail__info}>
-        <h1>{product.title}</h1>
+      <h4 className="font-bold text-lg mb-4">{title}</h4>
         <p>{product.description}</p>
-        <h2>${product.price}</h2>
+        <div className="flex items-center mb-2">
+          {Array(Math.round(product.rating.rate))
+            .fill(0)
+            .map((_, i) => (
+              <FaStar key={i} className="text-yellow-500" />
+            ))}
+        </div>
+        <div className="mb-3 font-bold">
+        <Currency quantity={price} currency="USD" />
+      </div>
         <button onClick={addItemToBasket} className="mt-auto button">
           Add to Cart
         </button>
