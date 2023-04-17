@@ -4,9 +4,10 @@ import ProductDetail from '../../components/ProductDetail';
 import { FaArrowLeft } from "react-icons/fa";
 
 export async function getServerSideProps(context) {
-  const id = context.query.id;
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-  const product = await res.json();
+  const { pid } = context.query;
+  const product = await fetch(
+    `https://fakestoreapi.com/products/${pid}`
+  ).then((res) => res.json());
 
   return {
     props: {
