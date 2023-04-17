@@ -10,7 +10,7 @@ import { StarIcon } from "../../icons";
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
-const Product = ({
+const ProductDetail = ({
   id,
   title,
   price,
@@ -76,7 +76,7 @@ const Product = ({
         <div className="mb-3 font-bold">
         <Currency quantity={product.price} currency="USD" />
       </div>
-        <button onClick={addItemToBasket} className="mt-auto button">
+        <button onClick={addItemTOBasket} className="mt-auto button">
           Add to Cart
         </button>
       </div>
