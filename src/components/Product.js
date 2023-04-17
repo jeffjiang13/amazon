@@ -102,7 +102,7 @@ const Product = ({
         onClick={addItemTOBasket}
         className="mt-auto button"
       >
-        Add to Busket
+        Add to Basket
       </motion.button>
     </motion.div>
   );
