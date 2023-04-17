@@ -1,22 +1,11 @@
-// pages/[pid].js
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { selectItems } from '../../slices/basketSlice';
-import ProductDetail from '../../components/ProductDetail';
-import db from '../../../firebase';
+import ProductDetail from '../components/ProductDetail';
 
 export async function getServerSideProps(context) {
   const { pid } = context.query;
-  const product = await db
-    .collection('products')
-    .doc(pid)
-    .get()
-    .then((doc) => {
-      return {
-        id: doc.id,
-        ...doc.data(),
-      };
-    });
+  const product = await fetch(
+    `https://fakestoreapi.com/products/${pid}`
+  ).then((res) => res.json());
 
   return {
     props: {
@@ -30,7 +19,7 @@ function ProductPage({ product }) {
 
   return (
     <div>
-      <button mt-auto button onClick={() => router.back()}>Go back</button>
+      <button onClick={() => router.back()}>Go back</button>
       <ProductDetail product={product} />
     </div>
   );
