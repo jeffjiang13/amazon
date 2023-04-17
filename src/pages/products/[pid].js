@@ -1,42 +1,37 @@
+// pages/[pid].js
 import { useRouter } from 'next/router';
-import Header from '../../components/Header';
-import ProductDetail from '../../components/ProductDetail';
-import { FaArrowLeft } from "react-icons/fa";
+import { useSelector } from 'react-redux';
+import { selectItems } from '../slices/basketSlice';
+import ProductDetail from '../components/ProductDetail';
+import db from '../../firebase';
 
 export async function getServerSideProps(context) {
-  const id = context.query.id;
-  try {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch data with status code: ${res.status}`);
-    }
-    const product = await res.json();
-    return {
-      props: {
-        product,
-      },
-    };
-  } catch (error) {
-    console.error(`Error fetching product data: ${error.message}`);
-    return {
-      notFound: true, // This will return a 404 page when there's an error
-    };
-  }
-}
+  const { pid } = context.query;
+  const product = await db
+    .collection('products')
+    .doc(pid)
+    .get()
+    .then((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
 
+  return {
+    props: {
+      product,
+    },
+  };
+}
 
 function ProductPage({ product }) {
   const router = useRouter();
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <Header />
-      <div className="container mx-auto py-6">
-        <button className="mt-auto button" onClick={() => router.back()}>
-        <FaArrowLeft />
-          </button>
-        <ProductDetail product={product} />
-      </div>
+    <div>
+      <button onClick={() => router.back()}>Go back</button>
+      <ProductDetail product={product} />
     </div>
   );
 }
