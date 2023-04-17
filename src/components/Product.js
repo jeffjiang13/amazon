@@ -53,64 +53,45 @@ const Product = ({
     });
   };
 
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="relative flex flex-col m-5 bg-white z-30 p-10 hover:shadow-lg"
-    >
-      <Toaster />
-      <p className="absolute top-2 right-2 text-xs italic text-gray-400">
-        {category}
-      </p>
-      <div className="items-center flex justify-center">
-      <Link href={`/products/${id}`}>
-
-        <Image
-          src={image}
-          alt={title}
-          height={200}
-          width={200}
-          className="object-contain mb-4 mx-auto"
-        />
-        </Link>
-      </div>
-
-      <Link href={`/products/${id}`}>
-      <h3 className="font-bold text-lg mb-4">{title}</h3>
-      </Link>
-      <div className="flex">
-        {Array(customRating)
-          .fill()
-          .map((_, i) => (
-            <StarIcon key={i} className="h-5 text-yellow-500" />
-          ))}
-      </div>
-      <p className="text-xs my-2 line-clamp-2">{description}</p>
-      <div className="mb-5">
-        <Currency quantity={price} currency="USD" />
-      </div>
-      {hasPrime && (
-        <div className="flex items-center space-x-2 -mt-5">
-          <img
-            className="w-12"
-            src="https://links.papareact.com/fdw"
-            alt=""
-          />
-          <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
-        </div>
-      )}
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={addItemTOBasket}
-        className="mt-auto button"
+    return (
+      <article
+        className="flex flex-col bg-white shadow-xl p-8 relative h-full"
+        key={id}
       >
-        Add to Cart
-      </motion.button>
-    </motion.div>
-  );
-};
-
+        <small className="absolute right-2 top-2 opacity-60 text-sm">
+          {category}
+        </small>
+        <Link href={`/products/${id}`}>
+          <img
+            src={image}
+            alt={title}
+            className="h-52 w-52 object-contain mb-4 mx-auto"
+          />
+        </Link>
+        <Link href={`/products/${id}`}>
+          <h2 className="font-bold text-lg mb-4">{title}</h2>
+        </Link>
+        <p className="flex mb-3 space-x-1">
+          {Array(Math.round(rating?.rate))
+            .fill(0)
+            .map((_, i) => (
+              <FaStar key={i} className="text-yellow-500" />
+            ))}
+        </p>
+        <p className="line-clamp-3 text-xs mb-3">{description}</p>
+        <div className="mb-5">
+          <Currency quantity={price} currency="USD" />
+        </div>
+        {hasPrime && (
+          <div className="flex items-center mt-auto">
+            <img src="https://links.papareact.com/fdw" alt="Prime" className="w-12 h-12 mr-2" />
+            <small className="opacity-70">FREE Next-day delivery</small>
+          </div>
+        )}
+        <button className="mt-auto btn" onClick={addItemTOBasket}>
+          Add to Cart
+        </button>
+      </article>
+    );
+  }
 export default Product;
