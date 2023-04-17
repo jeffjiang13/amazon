@@ -9,14 +9,18 @@ function ProductDetail({ product }) {
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
-    dispatch(
-      addToBasket({
-        ...product,
-        rating,
-        hasPrime,
-      })
-    );
+    const product = {
+      id,
+      title,
+      category,
+      description,
+      image,
+      price,
+      rating,
+    };
+    dispatch(addToBasket(product));
   };
+
 
 
   return (
@@ -35,7 +39,7 @@ function ProductDetail({ product }) {
         <p>{product.description}</p>
         <h2>${product.price}</h2>
         <button onClick={addItemToBasket} className="mt-auto button">
-          Add to Basket
+          Add to Cart
         </button>
       </div>
     </div>
