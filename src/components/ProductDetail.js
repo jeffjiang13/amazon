@@ -41,14 +41,14 @@ function ProductDetail({ product }) {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="grid grid-cols-5"
+      className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-lg"
     >
       <Toaster />
       <Image
         src={product.image}
         alt={product.title}
-        width={200}
-        height={200}
+        width={400}
+        height={400}
         objectFit="contain"
         className="object-contain"
       />
