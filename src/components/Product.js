@@ -37,7 +37,7 @@ const Product = ({
       category,
       image,
       hasPrime,
-      customRating,
+      rating,
     };
 
     dispatch(addToBasket(product));
@@ -58,6 +58,8 @@ const Product = ({
         className="flex flex-col bg-white shadow-xl p-8 relative h-full"
         key={id}
       >
+      <Toaster />
+
         <small className="absolute right-2 top-2 opacity-60 text-sm">
           {category}
         </small>
