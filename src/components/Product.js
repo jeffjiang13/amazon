@@ -1,65 +1,111 @@
-import { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import React, { useState } from "react";
+import Currency from "react-currency-formatter";
+import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
+import { StarIcon } from "../icons";
 import { addToBasket } from "../slices/basketSlice";
 
-export default function Product({ data }) {
-  const { id, title, category, description, image, price, rating } = data;
+const MAX_RATING = 5;
+const MIN_RATING = 1;
 
+const Product = ({
+  id,
+  title,
+  price,
+  description,
+  category,
+  image,
+  rating,
+}) => {
+  const dispatch = useDispatch();
+  const [customRating] = useState(
+    Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
+  );
   const [hasPrime] = useState(Math.random() < 0.5);
 
-  const dispatch = useDispatch();
+  const addItemTOBasket = () => {
+    const loadingToast = toast.loading("Adding Item...");
 
-  const addItemToBasket = () => {
     const product = {
       id,
       title,
-      category,
-      description,
-      image,
       price,
-      rating,
+      description,
+      category,
+      image,
+      hasPrime,
+      customRating,
     };
+
     dispatch(addToBasket(product));
+
+    toast.success(`Item Added To Basket`, {
+      id: loadingToast,
+
+      position: "bottom-right",
+      style: {
+        textAlign: "center",
+        padding: "18px",
+      },
+    });
   };
 
   return (
-    <article
-      className="flex flex-col bg-white shadow-xl p-8 relative h-full"
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="relative flex flex-col m-5 bg-white z-30 p-10 hover:shadow-lg"
     >
-      <small className="absolute right-2 top-2 opacity-60 text-sm">
+      <Toaster />
+      <p className="absolute top-2 right-2 text-xs italic text-gray-400">
         {category}
-      </small>
-      <Link to={`/products/${id}`}>
-        <img
+      </p>
+      <div className="items-center flex justify-center">
+        <Image
           src={image}
           alt={title}
-          className="h-52 w-52 object-contain mb-4 mx-auto"
+          height={200}
+          width={200}
+          className="object-contain "
         />
-      </Link>
-      <Link to={`/products/${id}`}>
-        <h2 className="font-bold text-lg mb-4">{title}</h2>
-      </Link>
-      <p className="flex mb-3 space-x-1">
-        {Array(Math.round(rating?.rate))
-          .fill(0)
+      </div>
+
+      <h4>{title}</h4>
+      <div className="flex">
+        {Array(customRating)
+          .fill()
           .map((_, i) => (
-            <FaStar key={i} className="text-yellow-500" />
+            <StarIcon key={i} className="h-5 text-yellow-500" />
           ))}
-      </p>
-      <p className="line-clamp-3 text-xs mb-3">{description}</p>
-      <p className="mb-3 font-bold">{"$" + price}</p>
+      </div>
+      <p className="text-xs my-2 line-clamp-2">{description}</p>
+      <div className="mb-5">
+        <Currency quantity={price} currency="USD" />
+      </div>
       {hasPrime && (
-        <div className="flex items-center mt-auto">
-          <img src="https://links.papareact.com/fdw" alt="Prime" className="w-12 h-12 mr-2" />
-          <small className="opacity-70">FREE Nex-day delivery!</small>
+        <div className="flex items-center space-x-2 -mt-5">
+          <img
+            className="w-12"
+            src="https://www.nicepng.com/png/detail/115-1159983_amazon-prime-logo-prime-amazon.png"
+            alt=""
+          />
+          <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
       )}
-      <button className="mt-auto btn" onClick={addItemToBasket}>
-        Add To Basket
-      </button>
-    </article>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={addItemTOBasket}
+        className="mt-auto button"
+      >
+        Add to Busket
+      </motion.button>
+    </motion.div>
   );
-}
+};
+
+export default Product;
