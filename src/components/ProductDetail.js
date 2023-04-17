@@ -1,21 +1,44 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addToBasket } from '../slices/basketSlice';
-import Image from 'next/image';
-import styles from './ProductDetail.module.css';
-import Currency from "react-currency-formatter";
-import { StarIcon } from "../../icons";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import React from "react";
+import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
-function ProductDetail({ product }) {
+import { addToBasket } from "../slices/basketSlice";
+import { StarIcon } from "../../icons";
+
+const CheckoutProduct = ({
+  id,
+  title,
+  price,
+  description,
+  category,
+  image,
+  hasPrime,
+  rating,
+}) => {
   const dispatch = useDispatch();
 
-  const addItemToBasket = () => {
-    const loadingToast = toast.loading("Adding Item..."); // Move loadingToast initialization here
+  const addItemTOBasket = () => {
+    const loadingToast = toast.loading("Adding Item...");
+
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+      hasPrime,
+      rating,
+    };
+
     dispatch(addToBasket(product));
+
     toast.success(`Item Added to Cart`, {
       id: loadingToast,
+
       position: "bottom-right",
       style: {
         textAlign: "center",
@@ -24,49 +47,57 @@ function ProductDetail({ product }) {
     });
   };
 
+
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-lg"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      className="grid grid-cols-5"
     >
       <Toaster />
-      <div className="flex space-x-6"> {/* Add space-x-6 for spacing */}
-        <div>
-          <Image
-            src={product.image}
-            alt={product.title}
-            width={450}
-            height={450}
-            objectFit="contain"
-          />
+      <Image src={image} height={400} width={400} className="object-contain" />
+      <div className="col-span-3 mx-5">
+      <h4 className="font-bold text-lg mb-4">{title}</h4>
+        <div className="flex">
+          {Array(rating)
+            .fill()
+            .map((_, i) => (
+              <StarIcon key={i} className="h-5 text-yellow-500" />
+            ))}
         </div>
-        <div className={styles.productDetail__info}>
-          <h4 className="font-bold text-lg mb-4">{product.title}</h4>
-          <p>{product.description}</p>
-          <div className="flex mb-3 space-x-1">
-            {Array(product.rating)
-              .fill()
-              .map((_, i) => (
-                <StarIcon key={i} className="h-5 text-yellow-500" />
-              ))}
+        <p className="text-xs my-2 line-clamp-3">{description}</p>
+        <Currency quantity={price} currency="USD" />
+        {hasPrime && (
+          <div className="flex items-center space-x-2">
+            <img
+              src="https://www.nicepng.com/png/detail/115-1159983_amazon-prime-logo-prime-amazon.png"
+              alt=""
+              loading="lazy"
+              className="w-12"
+            />
+            <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
           </div>
-          <div className="mb-3 font-bold">
-            <Currency quantity={product.price} currency="USD" />
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={addItemToBasket}
-            className="mt-auto button"
-          >
-            Add to Cart
-          </motion.button>
-        </div>
+        )}
+      </div>
+      <div className="flex flex-col space-y-2 my-auto justify-self-end">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.9 }}
+          className="button"
+          onClick={addItemTOBasket}
+        >
+          Add to Cart
+        </motion.button>
+
       </div>
     </motion.div>
   );
-}
+};
 
-export default ProductDetail;
+export default CheckoutProduct;
