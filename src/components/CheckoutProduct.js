@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 import { addToBasket, removeFromBasket } from "../slices/basketSlice";
-import { StarIcon } from "../icons";
+import { StarIcon } from "../../icons";
 
 const CheckoutProduct = ({
   id,
