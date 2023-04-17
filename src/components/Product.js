@@ -59,7 +59,7 @@ const Product = ({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="flex flex-col bg-white shadow-xl p-8 relative h-full"
+      className="relative flex flex-col m-5 bg-white z-30 p-10 hover:shadow-lg"
     >
       <Toaster />
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
