@@ -41,7 +41,7 @@ function ProductDetail({ product }) {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="flex flex-col m-5 bg-white z-30 p-10 shadow-lg gap-4"
+      className="grid grid-cols-5 bg-white z-30 p-10 shadow-lg gap-4"
     >
       <Toaster />
       <h4 className="absolute top-2 left-2 font-bold text-lg mb-4 z-20">
