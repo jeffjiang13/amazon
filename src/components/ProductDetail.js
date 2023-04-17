@@ -5,6 +5,7 @@ import { addToBasket } from '../slices/basketSlice';
 import Image from 'next/image';
 import styles from './ProductDetail.module.css';
 import Currency from "react-currency-formatter";
+import { FaStar } from 'react-icons/fa';
 
 function ProductDetail({ product }) {
   const dispatch = useDispatch();
