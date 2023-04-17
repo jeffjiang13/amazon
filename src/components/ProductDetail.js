@@ -8,37 +8,22 @@ import { StarIcon } from "../../icons";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 
-const ProductDetail = ({
-  id,
-  title,
-  price,
-  description,
-  category,
-  image,
-  hasPrime,
-  rating,
-}) => {
+function ProductDetail({ product }) {
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
-    const loadingToast = toast.loading("Adding Item...");
-
-    const product = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-      hasPrime,
-      rating,
+    const productToAdd = {
+      id: product.id,
+      title: product.title,
+      category: product.category,
+      description: product.description,
+      image: product.image,
+      price: product.price,
+      rating: product.rating.rate,
+      hasPrime: Math.random() < 0.5,
     };
-
-    dispatch(addToBasket(product));
-
-    toast.success(`Item Added to Cart`, {
-      id: loadingToast,
-
+    dispatch(addToBasket(productToAdd));
+    toast.success("Item Added to Cart", {
       position: "bottom-right",
       style: {
         textAlign: "center",
@@ -70,7 +55,7 @@ const ProductDetail = ({
       <div className="col-span-3 mx-5">
         <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
-          {Array(product.rating)
+          {Array(Math.round(product.rating.rate))
             .fill()
             .map((_, i) => (
               <StarIcon key={i} className="h-5 text-yellow-500" />
