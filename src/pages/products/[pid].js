@@ -5,15 +5,25 @@ import { FaArrowLeft } from "react-icons/fa";
 
 export async function getServerSideProps(context) {
   const id = context.query.id;
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-  const product = await res.json();
-
-  return {
-    props: {
-      product,
-    },
-  };
+  try {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch data with status code: ${res.status}`);
+    }
+    const product = await res.json();
+    return {
+      props: {
+        product,
+      },
+    };
+  } catch (error) {
+    console.error(`Error fetching product data: ${error.message}`);
+    return {
+      notFound: true, // This will return a 404 page when there's an error
+    };
+  }
 }
+
 
 function ProductPage({ product }) {
   const router = useRouter();
