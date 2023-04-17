@@ -41,7 +41,7 @@ function ProductDetail({ product }) {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="grid grid-cols-4"
+      className="grid grid-cols-5 gap-4"
     >
       <Toaster />
       <div className="relative">
@@ -53,7 +53,6 @@ function ProductDetail({ product }) {
           alt={product.title}
           width={400}
           height={400}
-          objectFit="contain"
           className="object-contain"
         />
       </div>
