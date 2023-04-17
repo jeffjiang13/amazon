@@ -22,9 +22,9 @@ const Product = ({
   rating,
 }) => {
   const dispatch = useDispatch();
-  const [customRating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
-  );
+  // const [customRating] = useState(
+  //   Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+  // );
   const [hasPrime] = useState(Math.random() < 0.5);
 
   const addItemTOBasket = () => {
@@ -60,7 +60,6 @@ const Product = ({
         key={id}
       >
       <Toaster />
-
         <small className="absolute right-2 top-2 opacity-60 text-sm">
           {category}
         </small>
