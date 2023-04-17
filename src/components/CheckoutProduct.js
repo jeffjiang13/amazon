@@ -114,7 +114,7 @@ const CheckoutProduct = ({
           onClick={removeItemFromBasket}
           className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300 "
         >
-          Remove from Cart
+          Remove
         </motion.button>
       </div>
     </motion.div>
