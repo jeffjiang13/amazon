@@ -35,7 +35,7 @@ function ProductDetail({ product }) {
         />
       </div>
       <div className={styles.productDetail__info}>
-      <h4 className="font-bold text-lg mb-4">{title}</h4>
+      <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <p>{product.description}</p>
         <div className="flex items-center mb-2">
           {Array(Math.round(product.rating.rate))
