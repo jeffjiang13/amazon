@@ -101,7 +101,7 @@ const Product = ({
         </div>
       )}
       <motion.button
-        whileHover={{ scale: 0.5 }}
+        whileHover={{ scale: 1.0 }}
         whileTap={{ scale: 0.9 }}
         onClick={addItemTOBasket}
         className="mt-auto button"
