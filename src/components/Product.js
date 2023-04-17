@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
+import { FaStar } from "react-icons/fa";
 
 import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
