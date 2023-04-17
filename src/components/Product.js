@@ -64,6 +64,11 @@ const Product = ({
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
         {category}
       </p>
+      <div
+          style={{
+            marginTop: "20px", // Adjust this value to move the content down
+          }}
+        >
       <div className="items-center flex justify-center">
       <Link href={`/products/${id}`}>
 
@@ -75,8 +80,13 @@ const Product = ({
           className="object-contain mb-4 mx-auto"
         />
         </Link>
+        </div>
       </div>
-
+      <div
+          style={{
+            marginTop: "20px", // Adjust this value to move the content down
+          }}
+        >
       <Link href={`/products/${id}`}>
       <h3 className="font-bold text-lg mb-4">{title}</h3>
       </Link>
@@ -91,6 +101,7 @@ const Product = ({
       <div className="mb-5">
         <Currency quantity={price} currency="USD" />
       </div>
+
       {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
           <img
@@ -101,6 +112,7 @@ const Product = ({
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
       )}
+      </div>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.9 }}
