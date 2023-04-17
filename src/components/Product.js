@@ -72,10 +72,11 @@ const Product = ({
           alt={title}
           height={200}
           width={200}
-          className="object-contain "
+          className="object-contain mb-4 mx-auto"
         />
         </Link>
       </div>
+
       <Link href={`/products/${id}`}>
       <h3 className="font-bold text-lg mb-4">{title}</h3>
       </Link>
