@@ -7,6 +7,7 @@ import styles from './ProductDetail.module.css';
 import Currency from "react-currency-formatter";
 import { StarIcon } from "../../icons";
 import { motion } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
 
 function ProductDetail({ product }) {
   const dispatch = useDispatch();
