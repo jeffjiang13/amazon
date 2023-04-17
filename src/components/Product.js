@@ -5,7 +5,7 @@ import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import { StarIcon } from "../icons";
+import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
 
 const MAX_RATING = 5;
