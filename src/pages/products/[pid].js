@@ -25,6 +25,9 @@ function ProductPage({ product }) {
       <div className="container mx-auto py-6">
         <button className="mt-auto button" onClick={() => router.back()}>
         <FaArrowLeft />
+        <h4 className="absolute top-2 left-2 font-bold text-lg">
+          {product.category}
+        </h4>
           </button>
         <ProductDetail product={product} />
       </div>
