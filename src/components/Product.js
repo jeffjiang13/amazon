@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
+import { Link } from "react-router-dom";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
