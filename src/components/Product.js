@@ -87,12 +87,12 @@ const Product = ({
             <StarIcon key={i} className="h-5 text-yellow-500" />
           ))}
       </div>
-      <p className="text-xs my-2 line-clamp-2">{description}</p>
-      <div className="mb-5">
+      <p className="line-clamp-3 text-xs mb-3">{description}</p>
+      <div className="mb-3 font-bold">
         <Currency quantity={price} currency="USD" />
       </div>
       {hasPrime && (
-        <div className="flex items-center space-x-2 -mt-5">
+        <div className="flex items-center mt-auto">
           <img
             className="w-12"
             src="https://links.papareact.com/fdw"
