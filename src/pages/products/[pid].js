@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import ProductDetail from '../components/ProductDetail';
+import ProductDetail from '../../components/ProductDetail';
 
 export async function getServerSideProps(context) {
   const { pid } = context.query;
