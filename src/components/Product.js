@@ -7,8 +7,7 @@ import { useDispatch } from "react-redux";
 
 import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
-import { Link } from "react-router-dom";
-
+import Link from "next/link";
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
@@ -23,7 +22,7 @@ const Product = ({
 }) => {
   const dispatch = useDispatch();
   const [customRating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
+    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
   const [hasPrime] = useState(Math.random() < 0.5);
 
