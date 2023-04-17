@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function ProductFeed({ products }) {
   return (
-    <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-52 mx-auto">
+      <div className="xl:grid-cols-4 md:grid-cols-3 grid-cols gap-6 sm:-mt-20 md:-mt-28 z-50 relative px-8 hidden sm:grid">
       {products
         .slice(0, 4)
         .map(({ id, title, price, description, category, image }) => (
