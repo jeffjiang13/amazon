@@ -22,7 +22,9 @@ function ProductPage({ product }) {
     <div className="bg-gray-100 min-h-screen">
       <Header />
       <div className="container mx-auto py-6">
-        <button className="mt-auto button" onClick={() => router.back()}>Go back</button>
+        <button className="mt-auto button" onClick={() => router.back()}>
+        <FaArrowLeft />
+          </button>
         <ProductDetail product={product} />
       </div>
     </div>
