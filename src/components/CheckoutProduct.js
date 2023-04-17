@@ -36,7 +36,7 @@ const CheckoutProduct = ({
 
     dispatch(addToBasket(product));
 
-    toast.success(`Item Added To Basket`, {
+    toast.success(`Item Added to Cart`, {
       id: loadingToast,
 
       position: "bottom-right",
