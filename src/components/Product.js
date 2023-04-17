@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import { addToBasket } from "../slices/basketSlice";
 
