@@ -43,6 +43,9 @@ function ProductDetail({ product }) {
       }}
       className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-lg"
     >
+      <h4 className="absolute top-2 left-2 font-bold text-lg mb-4">
+        {category}
+      </h4>
       <Toaster />
       <Image
         src={product.image}
