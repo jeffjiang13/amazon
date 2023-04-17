@@ -41,11 +41,11 @@ function ProductDetail({ product }) {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="grid grid-cols-5 gap-4"
+      className="relative flex flex-col m-5 bg-white z-30 p-10 hover:shadow-lg gap-4"
     >
       <Toaster />
       <div className="relative">
-      <h4 className="absolute top-2 left-2 font-bold text-lg mb-4 z-10">
+      <h4 className="absolute top-2 left-2 font-bold text-lg mb-4 z-20">
           {product.category}
         </h4>
         <Image
