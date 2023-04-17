@@ -55,7 +55,7 @@ function ProductDetail({ product }) {
       <div className="col-span-3 mx-5">
         <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
-          {Array(Math.round(product.rating.rate))
+          {Array((product.rating.rate))
             .fill()
             .map((_, i) => (
               <StarIcon key={i} className="h-5 text-yellow-500" />
