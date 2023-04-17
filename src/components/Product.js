@@ -74,7 +74,7 @@ const Product = ({
         />
       </div>
 
-      <h4>{title}</h4>
+      <h3 className="font-bold text-lg mb-4">{title}</h3>
       <div className="flex">
         {Array(customRating)
           .fill()
@@ -90,19 +90,19 @@ const Product = ({
         <div className="flex items-center space-x-2 -mt-5">
           <img
             className="w-12"
-            src="https://www.nicepng.com/png/detail/115-1159983_amazon-prime-logo-prime-amazon.png"
+            src="https://links.papareact.com/fdw"
             alt=""
           />
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
       )}
       <motion.button
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 0.5 }}
         whileTap={{ scale: 0.9 }}
         onClick={addItemTOBasket}
         className="mt-auto button"
       >
-        Add to Basket
+        Add to Cart
       </motion.button>
     </motion.div>
   );
