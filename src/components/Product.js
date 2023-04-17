@@ -66,7 +66,7 @@ const Product = ({
       </p>
       <div
           style={{
-            marginTop: "20px", // Adjust this value to move the content down
+            marginTop: "40px", // Adjust this value to move the content down
           }}
         >
       <div className="items-center flex justify-center">
