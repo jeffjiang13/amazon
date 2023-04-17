@@ -23,7 +23,7 @@ const Product = ({
 }) => {
   const dispatch = useDispatch();
   const [customRating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
+    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
   const [hasPrime] = useState(Math.random() < 0.5);
 
