@@ -41,8 +41,9 @@ function ProductDetail({ product }) {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="relative flex m-5 bg-white z-30 p-10 shadow-lg"
+      className="grid grid-cols-5"
     >
+      <Toaster />
       <div className="relative">
         <h4 className="absolute top-2 left-2 font-bold text-lg mb-4">
           {product.category}
@@ -56,7 +57,7 @@ function ProductDetail({ product }) {
           className="object-contain"
         />
       </div>
-      <div className="flex flex-col col-span-3 mx-5 justify-center">
+      <div className="col-span-3 mx-5">
         <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
           {Array(product.rating)
@@ -79,7 +80,7 @@ function ProductDetail({ product }) {
           </div>
         )}
       </div>
-      <div className="flex flex-col justify-center items-end">
+      <div className="flex flex-col space-y-2 my-auto justify-self-end">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
@@ -89,7 +90,6 @@ function ProductDetail({ product }) {
           Add to Cart
         </motion.button>
       </div>
-      <Toaster />
     </motion.div>
   );
 }
