@@ -74,7 +74,7 @@ const Product = ({
           <h2 className="font-bold text-lg mb-4">{title}</h2>
         </Link>
         <p className="flex mb-3 space-x-1">
-          {Array(Math.round(rating?.rate))
+          {Array(Math.round(rating?.rate || 0))
             .fill(0)
             .map((_, i) => (
               <FaStar key={i} className="text-yellow-500" />
