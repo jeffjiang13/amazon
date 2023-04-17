@@ -1,5 +1,5 @@
 // components/ProductDetail.js
-import React from 'react';
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '../slices/basketSlice';
 import Image from 'next/image';
