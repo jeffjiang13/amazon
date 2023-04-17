@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -11,6 +11,13 @@ const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
   return (
     <header>
@@ -27,13 +34,21 @@ const Header = () => {
             className="cursor-pointer p-4"
           />
         </div>
-        <div className="hidden sm:flex items-center rounded-md h-10 flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500">
+        <form
+          onSubmit={handleSearch}
+          className="flex items-center rounded-md h-10 flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500"
+        >
           <input
-            className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
+            className="p-2 h-full w-full md:w-auto flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
             type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <Search className="h-12 p-4" />
-        </div>
+          <button type="submit">
+            <Search className="h-12 p-4" />
+          </button>
+        </form>
+
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
           <div
             onClick={() => (session ? signOut() : signIn())}

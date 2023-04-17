@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
 import Image from "next/image";
-import styles from "./ProductDetail.module.css";
 import Currency from "react-currency-formatter";
 import { StarIcon } from "../../icons";
 import { motion } from "framer-motion";
@@ -41,10 +40,10 @@ function ProductDetail({ product }) {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="grid grid-cols-5 bg-white shadow-lg gap-4"
+      className="flex flex-col md:flex-row m-5 bg-white z-30 p-5 shadow-lg"
     >
       <Toaster />
-
+      <div className="mx-auto md:mx-0">
         <Image
           src={product.image}
           alt={product.title}
@@ -52,7 +51,8 @@ function ProductDetail({ product }) {
           height={400}
           className="object-contain"
         />
-      <div className="col-span-3 mx-5">
+      </div>
+      <div className="flex flex-col mt-5 md:mt-0 md:mx-10">
         <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
           {Array(product.rating)
@@ -74,18 +74,22 @@ function ProductDetail({ product }) {
             <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
           </div>
         )}
+        <div className="flex my-auto justify-self-end">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={addItemToBasket}
+  className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
+>
+  Add to Cart
+</motion.button>
+
+        </div>
+
       </div>
-      <div className="flex flex-col space-y-2 my-auto justify-self-end">
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={addItemToBasket}
-          className="button"
-        >
-          Add to Cart
-        </motion.button>
-      </div>
+
     </motion.div>
+
   );
 }
 
