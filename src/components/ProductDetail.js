@@ -25,8 +25,8 @@ function ProductDetail({ product }) {
 
 
   return (
-    <div className={styles.productDetail}>
-      <div className={styles.productDetail__image}>
+    <div className="h-screen m-8">
+      <div className="flex space-x-4 mb-4 items-center">
         <Image
           src={product.image}
           alt={product.title}
