@@ -44,7 +44,6 @@ function ProductDetail({ product }) {
         </div>
         <div className={styles.productDetail__info}>
           <h4 className="font-bold text-lg mb-4">{product.title}</h4>
-          <p>{product.description}</p>
           <div className="flex mb-3 space-x-1">
             {Array(product.rating)
               .fill()
@@ -52,6 +51,7 @@ function ProductDetail({ product }) {
                 <StarIcon key={i} className="h-5 text-yellow-500" />
               ))}
           </div>
+          <p>{product.description}</p>
           <div className="mb-3 font-bold">
             <Currency quantity={product.price} currency="USD" />
           </div>
