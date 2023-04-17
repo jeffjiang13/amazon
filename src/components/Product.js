@@ -42,7 +42,7 @@ const Product = ({
 
     dispatch(addToBasket(product));
 
-    toast.success(`Item Added To Basket`, {
+    toast.success(`Item Added To Cart`, {
       id: loadingToast,
 
       position: "bottom-right",
@@ -65,7 +65,7 @@ const Product = ({
         {category}
       </p>
       <div className="items-center flex justify-center">
-      <Link to={`/products/${id}`}>
+      <Link href={`/products/${id}`}>
 
         <Image
           src={image}
@@ -76,7 +76,7 @@ const Product = ({
         />
         </Link>
       </div>
-      <Link to={`/products/${id}`}>
+      <Link href={`/products/${id}`}>
       <h3 className="font-bold text-lg mb-4">{title}</h3>
       </Link>
       <div className="flex">
