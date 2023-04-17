@@ -23,12 +23,12 @@ function ProductPage({ product }) {
     <div className="bg-gray-100 min-h-screen">
       <Header />
       <div className="container mx-auto py-6">
-        <button className="mt-auto button" onClick={() => router.back()}>
-        <FaArrowLeft />
-        <h4 className="absolute top-2 left-2 font-bold text-lg">
-          {product.category}
-        </h4>
-          </button>
+        <button className="mt-auto flex items-center space-x-2 button" onClick={() => router.back()}>
+          <FaArrowLeft />
+          <h4 className="font-bold text-lg">
+            {product.category}
+          </h4>
+        </button>
         <ProductDetail product={product} />
       </div>
     </div>
