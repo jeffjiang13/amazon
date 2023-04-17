@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import ProductDetail from '../../components/ProductDetail';
+import Header from '../components/Header';
+import ProductDetail from '../components/ProductDetail';
 
 export async function getServerSideProps(context) {
   const { pid } = context.query;
@@ -18,9 +19,12 @@ function ProductPage({ product }) {
   const router = useRouter();
 
   return (
-    <div>
-      <button onClick={() => router.back()}>Go back</button>
-      <ProductDetail product={product} />
+    <div className="bg-gray-100 min-h-screen">
+      <Header />
+      <div className="container mx-auto py-6">
+        <button onClick={() => router.back()}>Go back</button>
+        <ProductDetail product={product} />
+      </div>
     </div>
   );
 }
