@@ -7,7 +7,6 @@ import styles from './ProductDetail.module.css';
 
 function ProductDetail({ product }) {
   const dispatch = useDispatch();
-
   const addItemToBasket = () => {
     const product = {
       id,
