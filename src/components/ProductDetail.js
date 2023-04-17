@@ -19,7 +19,7 @@ function ProductDetail({ product }) {
       description: product.description,
       image: product.image,
       price: product.price,
-      rating: product.rating.rate,
+      rating: product.rating,
       hasPrime: Math.random() < 0.5,
     };
     dispatch(addToBasket(productToAdd));
@@ -55,7 +55,7 @@ function ProductDetail({ product }) {
       <div className="col-span-3 mx-5">
         <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
-          {Array(Math.round(product.rating.rate))
+          {Array(product.rating)
             .fill()
             .map((_, i) => (
               <StarIcon key={i} className="h-5 text-yellow-500" />
