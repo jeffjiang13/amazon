@@ -45,15 +45,25 @@ function ProductDetail({ product }) {
         <div className={styles.productDetail__info}>
           <h4 className="font-bold text-lg mb-4">{product.title}</h4>
           <div className="flex mb-3 space-x-1">
-            {Array(product.rating)
-              .fill()
-              .map((_, i) => (
+          {Array.from({ length: product.rating }, (_, i) => (
+
                 <StarIcon key={i} className="h-5 text-yellow-500" />
               ))}
           </div>
           <p>{product.description}</p>
           <div className="mb-3 font-bold">
             <Currency quantity={product.price} currency="USD" />
+            {product.hasPrime && (
+          <div className="flex items-center space-x-2">
+            <img
+              src="https://www.nicepng.com/png/detail/115-1159983_amazon-prime-logo-prime-amazon.png"
+              alt=""
+              loading="lazy"
+              className="w-12"
+            />
+            <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
+          </div>
+        )}
           </div>
           <motion.button
             whileHover={{ scale: 1.02 }}
