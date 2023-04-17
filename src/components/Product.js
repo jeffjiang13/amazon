@@ -4,32 +4,45 @@ import React, { useState } from "react";
 import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { FaStar } from "react-icons/fa";
 
-import { StarIcon } from "../../icons";
+import { StarIcon } from "../icons";
 import { addToBasket } from "../slices/basketSlice";
-import Link from "next/link";
-export default function Product({ data }) {
-  const { id, title, category, description, image, price, rating } = data;
 
+const MAX_RATING = 5;
+const MIN_RATING = 1;
+
+const Product = ({
+  id,
+  title,
+  price,
+  description,
+  category,
+  image,
+  rating,
+}) => {
+  const dispatch = useDispatch();
+  const [customRating] = useState(
+    Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
+  );
   const [hasPrime] = useState(Math.random() < 0.5);
 
-  const dispatch = useDispatch();
-
-  const addToBasket = () => {
+  const addItemTOBasket  = () => {
     const loadingToast = toast.loading("Adding Item...");
 
     const product = {
       id,
       title,
-      category,
-      description,
-      image,
       price,
-      rating,
+      description,
+      category,
+      image,
+      hasPrime,
+      customRating,
     };
+
     dispatch(addToBasket(product));
-    toast.success(`Item Added To Basket`, {
+
+    toast.success(`Item Added to Cart`, {
       id: loadingToast,
 
       position: "bottom-right",
@@ -40,51 +53,63 @@ export default function Product({ data }) {
     });
   };
 
-    return (
-      <article
-        className="flex flex-col bg-white shadow-xl p-8 relative h-full"
-        key={id}
-      >
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="relative flex flex-col m-5 bg-white z-30 p-10 hover:shadow-lg"
+    >
       <Toaster />
+      <p className="absolute top-2 right-2 text-xs italic text-gray-400">
+        {category}
+      </p>
+      <div className="items-center flex justify-center">
+      <Link href={`/products/${id}`}>
 
-        <small className="absolute right-2 top-2 opacity-60 text-sm">
-          {category}
-        </small>
-        <Link href={`/products/${id}`}>
+        <Image
+          src={image}
+          alt={title}
+          height={200}
+          width={200}
+          className="object-contain "
+        />
+        </Link>
+      </div>
+      <Link href={`/products/${id}`}>
+      <h4 className="font-bold text-lg mb-4">{title}</h4>
+      </Link>
+      <div className="flex">
+        {Array(customRating)
+          .fill()
+          .map((_, i) => (
+            <StarIcon key={i} className="h-5 text-yellow-500" />
+          ))}
+      </div>
+      <p className="text-xs my-2 line-clamp-2">{description}</p>
+      <div className="mb-5">
+        <Currency quantity={price} currency="USD" />
+      </div>
+      {hasPrime && (
+        <div className="flex items-center space-x-2 -mt-5">
           <img
-            src={image}
-            alt={title}
-            className="h-52 w-52 object-contain mb-4 mx-auto"
+            className="w-12"
+            src="https://links.papareact.com/fdw"
+            alt=""
           />
-        </Link>
-        <Link href={`/products/${id}`}>
-          <h2 className="font-bold text-lg mb-4">{title}</h2>
-        </Link>
-        <p className="flex mb-3 space-x-1">
-          {Array(Math.round(rating?.rate || 0))
-            .fill(0)
-            .map((_, i) => (
-              <FaStar key={i} className="text-yellow-500" />
-            ))}
-        </p>
-        <p className="line-clamp-3 text-xs mb-3">{description}</p>
-        <div className="mb-5">
-          <Currency quantity={price} currency="USD" />
+          <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
-        {hasPrime && (
-          <div className="flex items-center mt-auto">
-            <img src="https://links.papareact.com/fdw" alt="Prime" className="w-12 h-12 mr-2" />
-            <small className="opacity-70">FREE Next-day delivery</small>
-          </div>
-        )}
+      )}
       <motion.button
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.9 }}
         onClick={addItemTOBasket}
         className="mt-auto button"
       >
-        Add to Busket
+        Add to Cart
       </motion.button>
-      </article>
-    );
-  }
+    </motion.div>
+  );
+};
+
+export default Product;
