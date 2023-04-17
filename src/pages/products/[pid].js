@@ -1,9 +1,9 @@
 // pages/[pid].js
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import { selectItems } from '../slices/basketSlice';
-import ProductDetail from '../components/ProductDetail';
-import db from '../../firebase';
+import { selectItems } from '../../slices/basketSlice';
+import ProductDetail from '../../components/ProductDetail';
+import db from '../../../firebase';
 
 export async function getServerSideProps(context) {
   const { pid } = context.query;
