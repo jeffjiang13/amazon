@@ -30,7 +30,7 @@ function ProductPage({ product }) {
 
   return (
     <div>
-      <button onClick={() => router.back()}>Go back</button>
+      <button mt-auto button onClick={() => router.back()}>Go back</button>
       <ProductDetail product={product} />
     </div>
   );
