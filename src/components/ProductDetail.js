@@ -1,46 +1,28 @@
 // components/ProductDetail.js
-import React, { useState } from "react";
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '../slices/basketSlice';
 import Image from 'next/image';
 import styles from './ProductDetail.module.css';
 import Currency from "react-currency-formatter";
 import { StarIcon } from "../../icons";
+import { motion } from "framer-motion";
 
-const MAX_RATING = 5;
-const MIN_RATING = 1;
-
-const ProductDetail = ({
-  id,
-  title,
-  price,
-  description,
-  category,
-  image,
-  rating,
-}) => {
+function ProductDetail({ product }) {
   const dispatch = useDispatch();
-  const [customRating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
-  );
-  const [hasPrime] = useState(Math.random() < 0.5);
+  const loadingToast = toast.loading("Adding Item...");
 
-  const addItemTOBasket  = () => {
-    const loadingToast = toast.loading("Adding Item...");
-
+  const addItemToBasket = () => {
     const product = {
       id,
       title,
-      price,
-      description,
       category,
+      description,
       image,
-      hasPrime,
-      customRating,
+      price,
+      rating,
     };
-
     dispatch(addToBasket(product));
-
     toast.success(`Item Added to Cart`, {
       id: loadingToast,
 
@@ -52,14 +34,18 @@ const ProductDetail = ({
     });
   };
 
+
+
   return (
     <div className="h-screen m-8">
-      <div className="flex space-x-4 mb-4 items-center">
+      <div className="flex space-x-4 mb-4">
+      <Toaster />
+
         <Image
           src={product.image}
           alt={product.title}
-          width={500}
-          height={500}
+          width={450}
+          height={450}
           objectFit="contain"
         />
       </div>
@@ -76,9 +62,14 @@ const ProductDetail = ({
         <div className="mb-3 font-bold">
         <Currency quantity={product.price} currency="USD" />
       </div>
-        <button onClick={addItemTOBasket} className="mt-auto button">
-          Add to Cart
-        </button>
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={addItemToBasket}
+        className="mt-auto button"
+      >
+        Add to Cart
+      </motion.button>
       </div>
     </div>
   );
