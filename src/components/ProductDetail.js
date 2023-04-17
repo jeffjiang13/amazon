@@ -46,7 +46,7 @@ function ProductDetail({ product }) {
             ))}
         </div>
         <div className="mb-3 font-bold">
-        <Currency quantity={price} currency="USD" />
+        <Currency quantity={product.price} currency="USD" />
       </div>
         <button onClick={addItemToBasket} className="mt-auto button">
           Add to Cart
