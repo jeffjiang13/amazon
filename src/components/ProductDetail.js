@@ -38,8 +38,13 @@ function ProductDetail({ product }) {
 
 
   return (
-    <div className="h-screen m-8">
-      <div className="flex space-x-4 mb-4">
+    <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-lg"
+  >
+
       <Toaster />
 
         <Image
@@ -49,7 +54,7 @@ function ProductDetail({ product }) {
           height={450}
           objectFit="contain"
         />
-      </div>
+
       <div className={styles.productDetail__info}>
       <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <p>{product.description}</p>
@@ -72,7 +77,8 @@ function ProductDetail({ product }) {
         Add to Cart
       </motion.button>
       </div>
-    </div>
+
+    </motion.div>
   );
 }
 
