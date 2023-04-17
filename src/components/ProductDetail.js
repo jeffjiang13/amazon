@@ -10,19 +10,9 @@ import toast, { Toaster } from "react-hot-toast";
 
 function ProductDetail({ product }) {
   const dispatch = useDispatch();
-  const loadingToast = toast.loading("Adding Item...");
 
   const addItemToBasket = () => {
-    // Remove the following line as it redeclares the product variable
-    // const product = {
-    //   id,
-    //   title,
-    //   category,
-    //   description,
-    //   image,
-    //   price,
-    //   rating,
-    // };
+    const loadingToast = toast.loading("Adding Item..."); // Move loadingToast initialization here
     dispatch(addToBasket(product));
     toast.success(`Item Added to Cart`, {
       id: loadingToast,
@@ -42,7 +32,7 @@ function ProductDetail({ product }) {
       className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-lg"
     >
       <Toaster />
-      <div className="flex">
+      <div className="flex space-x-6"> {/* Add space-x-6 for spacing */}
         <div>
           <Image
             src={product.image}
