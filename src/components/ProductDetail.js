@@ -35,7 +35,7 @@ function ProductDetail({ product }) {
         <p>{product.description}</p>
         <h2>${product.price}</h2>
         <button onClick={addItemToBasket} className={styles.productDetail__addToBasketButton}>
-          Add to Basket
+          Add to Cart
         </button>
       </div>
     </div>

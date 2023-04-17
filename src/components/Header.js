@@ -55,7 +55,7 @@ const Header = () => {
             </span>
             <ShoppingCart className="h-10 text-white" />
             <p className="hidden md:inline mt-2 font-extrabold md:text-sm">
-              Basket
+              Cart
             </p>
           </div>
         </div>
