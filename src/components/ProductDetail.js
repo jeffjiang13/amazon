@@ -54,7 +54,7 @@ function ProductDetail({ product }) {
       <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <p>{product.description}</p>
         <div className="flex mb-3 space-x-1">
-        {Array(product.rating.rate)
+        {Array(Math.round(product.rating.rate))
           .fill()
           .map((_, i) => (
             <StarIcon key={i} className="h-5 text-yellow-500" />
