@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
@@ -79,7 +80,7 @@ const Product = ({
       <Link href={`/products/${id}`}>
       <h4 className="font-bold text-lg mb-4">{title}</h4>
       </Link>
-      <div className="flex">
+      <div className="flex mb-3 space-x-1">
         {Array(customRating)
           .fill()
           .map((_, i) => (
