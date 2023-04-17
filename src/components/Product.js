@@ -5,7 +5,7 @@ import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import { StarIcon } from "../icons";
+import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
 
 const MAX_RATING = 5;
@@ -58,7 +58,7 @@ const Product = ({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="relative flex flex-col m-5 bg-white z-30 p-10 hover:shadow-lg"
+      className="flex flex-col bg-white shadow-xl p-8 relative h-full"
     >
       <Toaster />
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
@@ -72,7 +72,7 @@ const Product = ({
           alt={title}
           height={200}
           width={200}
-          className="object-contain "
+          className="h-52 w-52 object-contain mb-4 mx-auto"
         />
         </Link>
       </div>
