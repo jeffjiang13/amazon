@@ -65,6 +65,8 @@ const Product = ({
         {category}
       </p>
       <div className="items-center flex justify-center">
+      <Link to={`/products/${id}`}>
+
         <Image
           src={image}
           alt={title}
@@ -72,9 +74,11 @@ const Product = ({
           width={200}
           className="object-contain "
         />
+        </Link>
       </div>
-
+      <Link to={`/products/${id}`}>
       <h3 className="font-bold text-lg mb-4">{title}</h3>
+      </Link>
       <div className="flex">
         {Array(customRating)
           .fill()
