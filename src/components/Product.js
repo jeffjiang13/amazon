@@ -28,7 +28,6 @@ export default function Product({ data }) {
   return (
     <article
       className="flex flex-col bg-white shadow-xl p-8 relative h-full"
-      key={id}
     >
       <small className="absolute right-2 top-2 opacity-60 text-sm">
         {category}
