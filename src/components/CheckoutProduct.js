@@ -1,60 +1,29 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
 import React from "react";
-import Currency from "react-currency-formatter";
-import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import { addToBasket } from "../slices/basketSlice";
+import Image from "next/image";
+import styles from "./ProductDetail.module.css";
+import Currency from "react-currency-formatter";
 import { StarIcon } from "../../icons";
+import { motion } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
 
-const CheckoutProduct = ({
-  id,
-  title,
-  price,
-  description,
-  category,
-  image,
-  hasPrime,
-  rating,
-}) => {
+function ProductDetail({ product }) {
   const dispatch = useDispatch();
 
-  const addItemTOBasket = () => {
-    const loadingToast = toast.loading("Adding Item...");
-
-    const product = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-      hasPrime,
-      rating,
+  const addItemToBasket = () => {
+    const productToAdd = {
+      id: product.id,
+      title: product.title,
+      category: product.category,
+      description: product.description,
+      image: product.image,
+      price: product.price,
+      rating: product.rating.rate,
+      hasPrime: Math.random() < 0.5,
     };
-
-    dispatch(addToBasket(product));
-
-    toast.success(`Item Added to Cart`, {
-      id: loadingToast,
-
-      position: "bottom-right",
-      style: {
-        textAlign: "center",
-        padding: "18px",
-      },
-    });
-  };
-
-  const removeItemFromBasket = () => {
-    const loadingToast = toast.loading("Remove Item...");
-
-    dispatch(removeFromBasket({ id }));
-
-    toast.error(`Item Removed from Basket`, {
-      id: loadingToast,
-
+    dispatch(addToBasket(productToAdd));
+    toast.success("Item Added to Cart", {
       position: "bottom-right",
       style: {
         textAlign: "center",
@@ -75,19 +44,26 @@ const CheckoutProduct = ({
       className="grid grid-cols-5"
     >
       <Toaster />
-      <Image src={image} height={200} width={200} className="object-contain" />
+      <Image
+        src={product.image}
+        alt={product.title}
+        width={200}
+        height={200}
+        objectFit="contain"
+        className="object-contain"
+      />
       <div className="col-span-3 mx-5">
-      <h4 className="font-bold text-lg mb-4">{title}</h4>
+        <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
-          {Array(rating)
+          {Array(Math.round(product.rating.rate))
             .fill()
             .map((_, i) => (
               <StarIcon key={i} className="h-5 text-yellow-500" />
             ))}
         </div>
-        <p className="text-xs my-2 line-clamp-3">{description}</p>
-        <Currency quantity={price} currency="USD" />
-        {hasPrime && (
+        <p className="text-xs my-2 line-clamp-3">{product.description}</p>
+        <Currency quantity={product.price} currency="USD" />
+        {product.hasPrime && (
           <div className="flex items-center space-x-2">
             <img
               src="https://www.nicepng.com/png/detail/115-1159983_amazon-prime-logo-prime-amazon.png"
@@ -103,22 +79,14 @@ const CheckoutProduct = ({
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
+          onClick={addItemToBasket}
           className="button"
-          onClick={addItemTOBasket}
         >
           Add to Cart
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={removeItemFromBasket}
-          className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300 "
-        >
-          Remove from Cart
         </motion.button>
       </div>
     </motion.div>
   );
-};
+}
 
-export default CheckoutProduct;
+export default ProductDetail;
