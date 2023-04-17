@@ -9,41 +9,27 @@ import { FaStar } from "react-icons/fa";
 import { StarIcon } from "../../icons";
 import { addToBasket } from "../slices/basketSlice";
 import Link from "next/link";
-const MAX_RATING = 5;
-const MIN_RATING = 1;
+export default function Product({ data }) {
+  const { id, title, category, description, image, price, rating } = data;
 
-const Product = ({
-  id,
-  title,
-  price,
-  description,
-  category,
-  image,
-  rating,
-}) => {
-  const dispatch = useDispatch();
-  // const [customRating] = useState(
-  //   Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
-  // );
   const [hasPrime] = useState(Math.random() < 0.5);
 
-  const addItemTOBasket = () => {
+  const dispatch = useDispatch();
+
+  const addToBasket = () => {
     const loadingToast = toast.loading("Adding Item...");
 
     const product = {
       id,
       title,
-      price,
-      description,
       category,
+      description,
       image,
-      hasPrime,
+      price,
       rating,
     };
-
     dispatch(addToBasket(product));
-
-    toast.success(`Item Added To Cart`, {
+    toast.success(`Item Added To Basket`, {
       id: loadingToast,
 
       position: "bottom-right",
@@ -60,6 +46,7 @@ const Product = ({
         key={id}
       >
       <Toaster />
+
         <small className="absolute right-2 top-2 opacity-60 text-sm">
           {category}
         </small>
@@ -90,10 +77,14 @@ const Product = ({
             <small className="opacity-70">FREE Next-day delivery</small>
           </div>
         )}
-        <button className="mt-auto btn" onClick={addItemTOBasket}>
-          Add to Cart
-        </button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={addItemTOBasket}
+        className="mt-auto button"
+      >
+        Add to Busket
+      </motion.button>
       </article>
     );
   }
-export default Product;
