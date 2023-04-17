@@ -1,22 +1,12 @@
-// pages/[pid].js
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { selectItems } from '../slices/basketSlice';
-import ProductDetail from '../components/ProductDetail';
-import db from '../../firebase';
+import Header from '../../components/Header';
+import ProductDetail from '../../components/ProductDetail';
+import { FaArrowLeft } from "react-icons/fa";
 
 export async function getServerSideProps(context) {
-  const { pid } = context.query;
-  const product = await db
-    .collection('products')
-    .doc(pid)
-    .get()
-    .then((doc) => {
-      return {
-        id: doc.id,
-        ...doc.data(),
-      };
-    });
+  const id = context.query.id;
+  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const product = await res.json();
 
   return {
     props: {
@@ -29,9 +19,14 @@ function ProductPage({ product }) {
   const router = useRouter();
 
   return (
-    <div>
-      <button onClick={() => router.back()}>Go back</button>
-      <ProductDetail product={product} />
+    <div className="bg-gray-100 min-h-screen">
+      <Header />
+      <div className="container mx-auto py-6">
+        <button className="mt-auto button" onClick={() => router.back()}>
+        <FaArrowLeft />
+          </button>
+        <ProductDetail product={product} />
+      </div>
     </div>
   );
 }
