@@ -74,7 +74,7 @@ const HeaderBottom = () => {
                 )}
 
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
-              <p>{session ? `Hello ${session?.user?.name}` : "Hello, Sign In"}</p>
+              <p>{session ? `Hello, ${session?.user?.name}` : "Hello, Sign In"}</p>
                 </h3>
               </div>
               {/* ============================ Content & Devices Start here ================ */}
