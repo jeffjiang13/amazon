@@ -105,7 +105,7 @@ const Product = ({
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.9 }}
         onClick={addItemTOBasket}
-        className="mt-auto button"
+        className="mt-auto w-full bg-yellow-400 rounded-md py-1 font-semibold cursor-pointer hover:bg-yellow-500 active:bg-yellow-700"
       >
         Add to Cart
       </motion.button>
