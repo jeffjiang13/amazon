@@ -3,8 +3,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import { CheckCircleIcon } from "../../icons";
+import Footer from "../components/footer/Footer"
 
 const Success = () => {
   const router = useRouter();
@@ -46,6 +47,7 @@ const Success = () => {
             Go to orders
           </button>
         </div>
+        <Footer />
       </main>
     </motion.div>
   );

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import ProductFeed from "../components/ProductFeed";
 import { motion } from "framer-motion";
 import Head from "next/head";

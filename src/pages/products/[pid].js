@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import ProductDetail from '../../components/ProductDetail';
 import { FaArrowLeft } from "react-icons/fa";
 import Head from "next/head";
+import Footer from "../../components/footer/Footer"
 
 export async function getServerSideProps(context) {
   const { pid } = context.query;
@@ -43,6 +44,7 @@ function ProductPage({ product }) {
           </h3>
           <br />
         <ProductDetail product={product} />
+        <Footer />
       </div>
     </div>
   );
