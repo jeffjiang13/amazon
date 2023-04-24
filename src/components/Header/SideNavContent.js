@@ -1,7 +1,10 @@
 import React from "react";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useSession } from "next-auth/react";
 
 const SideNavContent = ({ title, one, two, three }) => {
+  const { data: session } = useSession();
+
   return (
     <div className="py-3 border-b-[1px] border-b-gray-300">
       <h3 className="text-lg font-titleFont font-semibold mb-1 px-6">

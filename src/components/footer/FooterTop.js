@@ -8,9 +8,9 @@ const FooterTop = () => {
     <div className="w-full bg-white py-6">
       <div className="w-full border-t-[1px] border-b-[1px] py-8">
         <div className="w-64 mx-auto text-center font-titleFont">
-          <p className="text-sm">See personalized recommendations</p>
-          {!session && (
+        {!session && (
             <>
+          <p className="text-sm">See personalized recommendations</p>
               <button className="w-full bg-yellow-400 rounded-md py-1 font-semibold cursor-pointer hover:bg-yellow-500 active:bg-yellow-700">
                 Sign In
               </button>
