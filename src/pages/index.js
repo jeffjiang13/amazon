@@ -36,7 +36,7 @@ export default function Home({ products }) {
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   const products = await fetch(
-    "https://fakestoreapi.com/products"
+    "https://hasinduperera12.github.io/amazonAPi/amazon.json"
   ).then((res) => res.json());
 
   return {
