@@ -24,6 +24,17 @@ Amazon 2.0 with NEXT.JS! (ReactJS, Webhooks, complete Stripe Payments Checkout, 
 <a href="https://jeff-amazon.vercel.app/" target="_blank">![](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)</a>
 
 
+# Features
+- Next auth/google auth - sign in
+- Add to cart and remove from cart
+- Detail page with image modal
+- Complete Stripe Payments Checkout
+- Cloud Firestore database
+- Webhooks
+- Redux
+- Tailwind CSS
+- Responsive design
+- Deployed on Vercel
 
 
 # Redux Toolkit example
