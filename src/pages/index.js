@@ -3,7 +3,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 
 import Banner from "../components/Banner";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import ProductFeed from "../components/ProductFeed";
 import Footer from "../components/footer/Footer"
 export default function Home({ products }) {

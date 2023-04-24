@@ -4,7 +4,7 @@ import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import React from "react";
 
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Order from "../components/Order";
 import db from "../../firebase";
 import Footer from "../components/footer/Footer"

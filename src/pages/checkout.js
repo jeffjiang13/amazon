@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Footer from "../components/footer/Footer"
 
 const striprPromise = loadStripe(process.env.stripe_public_key);
@@ -82,7 +82,7 @@ const Checkout = () => {
             ))}
           </div>
         </div>
-        <div className="hidden flex flex-col bg-white p-10 shadow-md">
+        <div className="flex flex-col bg-white p-10 shadow-md">
           {items.length > 0 && (
             <>
               <h2 className="whitespace-nowrap">
