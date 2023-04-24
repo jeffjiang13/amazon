@@ -5,7 +5,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SideNavContent from "./SideNavContent";
 import { useSelector } from "react-redux";
+import { useSession } from "next-auth/react";
+
 const HeaderBottom = () => {
+  const { data: session } = useSession();
+
   const userInfo = useSelector((state) => state?.amazonReducer?.userInfo);
   const ref = useRef();
   const [sidebar, setSidebar] = useState(false);
@@ -68,8 +72,9 @@ const HeaderBottom = () => {
                 ) : (
                   <AccountCircleIcon />
                 )}
+
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
-                  Hello, Sign In
+              <p>{session ? `Hello ${session?.user?.name}` : "Hello, Sign In"}</p>
                 </h3>
               </div>
               {/* ============================ Content & Devices Start here ================ */}
