@@ -5,7 +5,11 @@ import Currency from "react-currency-formatter";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import {
+  addToBasket,
+  removeFromBasket,
+  updateItemQuantity,
+} from "../slices/basketSlice";
 import { StarIcon } from "../../icons";
 
 const CheckoutProduct = ({
@@ -17,6 +21,7 @@ const CheckoutProduct = ({
   image,
   hasPrime,
   rating,
+  quantity,
 }) => {
   const dispatch = useDispatch();
 
@@ -32,6 +37,8 @@ const CheckoutProduct = ({
       image,
       hasPrime,
       rating,
+      quantity: 1, // Add this line
+
     };
 
     dispatch(addToBasket(product));
@@ -62,6 +69,23 @@ const CheckoutProduct = ({
       },
     });
   };
+  const increaseItemQuantity = () => {
+    dispatch(
+      updateItemQuantity({
+        id,
+        quantityChange: 1,
+      })
+    );
+  };
+
+  const decreaseItemQuantity = () => {
+    dispatch(
+      updateItemQuantity({
+        id,
+        quantityChange: -1,
+      })
+    );
+  };
 
   return (
     <motion.div
@@ -77,7 +101,7 @@ const CheckoutProduct = ({
       <Toaster />
       <Image src={image} height={200} width={200} className="object-contain" />
       <div className="col-span-3 mx-5">
-      <h4 className="font-bold text-lg mb-4">{title}</h4>
+        <h4 className="font-bold text-lg mb-4">{title}</h4>
         <div className="flex">
           {Array(rating)
             .fill()
@@ -100,21 +124,33 @@ const CheckoutProduct = ({
         )}
       </div>
       <div className="flex flex-col space-y-2 my-auto justify-self-end">
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.9 }}
-          className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
-          onClick={addItemTOBasket}
-
-        >
-          Add to Cart
-        </motion.button>
+        <div className="flex items-center space-x-2">
+          <p>Quantity: {quantity}</p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={increaseItemQuantity}
+            className="p-2 w-7 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
+          >
+            +
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={decreaseItemQuantity}
+            className="p-2 w-7 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
+          >
+            -
+          </motion.button>
+        </div>
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
           onClick={removeItemFromBasket}
           className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
-          >
+        >
           Remove
         </motion.button>
       </div>

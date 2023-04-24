@@ -42,13 +42,15 @@ const Success = () => {
           </p>
           <button
             onClick={() => router.push("/orders")}
-            className="button mt-8"
+            className=" mt-12 bg-yellow-400 rounded-md py-1 font-semibold cursor-pointer hover:bg-yellow-500 active:bg-yellow-700"
           >
             Go to orders
           </button>
+
         </div>
-        <Footer />
+
       </main>
+      <Footer />
     </motion.div>
   );
 };

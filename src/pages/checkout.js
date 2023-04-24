@@ -8,16 +8,22 @@ import React from "react";
 import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
 
-import { selectItems, selectTotal } from "../slices/basketSlice";
+import {
+  selectItems,
+  selectTotal,
+  selectTotalQuantity,
+} from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header/Header";
-import Footer from "../components/footer/Footer"
+import Footer from "../components/footer/Footer";
 
 const striprPromise = loadStripe(process.env.stripe_public_key);
 
 const Checkout = () => {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
+  const totalQuantity = useSelector(selectTotalQuantity);
+
   const { data: session } = useSession();
 
   const createCheckOutSession = async () => {
@@ -62,7 +68,7 @@ const Checkout = () => {
           />
 
           <div className="flex flex-col p-5 space-y-10 bg-white">
-            <h1 className="text-3xl border-b pb-4">
+            <h1 className="text-3xl border-b pb-4 font-semibold">
               {items.length === 0
                 ? "Your Amazon Cart is empty"
                 : "Your Shopping Cart"}
@@ -78,16 +84,20 @@ const Checkout = () => {
                 image={item.image}
                 hasPrime={item.hasPrime}
                 rating={item.customRating}
+                quantity={item.quantity}
               />
             ))}
           </div>
         </div>
-        <div className="flex flex-col bg-white p-10 shadow-md">
+
+        <div className="flex flex-col bg-white p-10 shadow-md justify-center">
           {items.length > 0 && (
             <>
-              <h2 className="whitespace-nowrap">
-                subtotal ({items.length}) items:
+              <h2 className="whitespace-nowrap font-semibold">
+                Subtotal ({totalQuantity}{" "}
+                {totalQuantity === 1 ? "item" : "items"}):
                 <span className="font-bold">
+                  {" "}
                   <Currency quantity={total} currency="USD" />
                 </span>
               </h2>
@@ -97,7 +107,7 @@ const Checkout = () => {
                 onClick={createCheckOutSession}
                 className={`button mt-2 ${
                   !session &&
-                  `from-gray-300 to-gray-500 text-gray-300 cursor-not-allowed`
+                  `from-gray-300 to-gray-500 text-gray-300 cursor-not-allowed rounded-md`
                 }`}
               >
                 {!session ? `Sign in to checkout` : `Proceed to checkout`}
