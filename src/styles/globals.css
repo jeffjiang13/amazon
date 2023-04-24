@@ -1,8 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+  /* Define the font-titleFont class */
+  .font-titleFont {
+    font-family: 'Poppins', sans-serif;
+  }
+
   .link {
     @apply hover:underline cursor-pointer;
   }
@@ -10,5 +18,19 @@
   .button {
     @apply p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500;
   }
+  .headerHover {
+    @apply px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100;
+  }
+  .footerLink {
+    @apply text-sm font-titleFont tracking-wide hover:text-gray-100 cursor-pointer hover:underline duration-150;
+  }
+  .footerBottomTitle {
+    @apply w-24 font-semibold text-[12px] group-hover:underline text-[#DDD] leading-3 mb-[2px];
+  }
+  .footerBottomText {
+    @apply w-24 tracking-tight text-[12px] text-[#999] group-hover:underline leading-3;
+  }
+  .productLi {
+    @apply text-gray-600 hover:text-black text-sm font-medium border-b-[1px] border-b-gray-400 hover:border-b-gray-700 flex items-center justify-end gap-2 hover:cursor-pointer duration-300 w-full;
+  }
 }
-/* Add this to your existing CSS file */

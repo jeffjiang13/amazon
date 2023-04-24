@@ -7,6 +7,7 @@ import React from "react";
 import Header from "../components/Header";
 import Order from "../components/Order";
 import db from "../../firebase";
+import Footer from "../components/footer/Footer"
 
 const Orders = ({ orders }) => {
   const { data: session } = useSession();
@@ -51,6 +52,7 @@ const Orders = ({ orders }) => {
           ))}
         </div>
       </main>
+      <Footer />
     </motion.div>
   );
 };

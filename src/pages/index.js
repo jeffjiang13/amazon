@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import ProductFeed from "../components/ProductFeed";
-
+import Footer from "../components/footer/Footer"
 export default function Home({ products }) {
   return (
     <motion.div
@@ -27,6 +27,7 @@ export default function Home({ products }) {
       <main className="max-w-screen-2xl mx-auto">
         <Banner />
         <ProductFeed products={products} />
+        <Footer />
       </main>
     </motion.div>
   );

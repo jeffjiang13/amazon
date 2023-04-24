@@ -103,8 +103,9 @@ const CheckoutProduct = ({
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
-          className="button"
+          className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
           onClick={addItemTOBasket}
+
         >
           Add to Cart
         </motion.button>
@@ -112,8 +113,8 @@ const CheckoutProduct = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
           onClick={removeItemFromBasket}
-          className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300 "
-        >
+          className="p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500 hover:bg-gradient-to-b hover:from-orange-200 hover:to-orange-400 hover:border hover:border-orange-300"
+          >
           Remove
         </motion.button>
       </div>

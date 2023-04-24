@@ -8,6 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        footerBottom: "#131A22",
+        amazon_blue: "#131921",
+        amazon_light: "#232F3E",
+        amazon_yellow: "#febd69",
+        whiteText: "#ffffff",
+        lightText: "#ccc",
+        quantity_box: "#F0F2F2",
         amazon_blue: {
           light: "#232F3E",
           DEFAULT: "#131921",

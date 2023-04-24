@@ -1,11 +1,14 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import SearchIcon from "@mui/icons-material/Search";
 
-import { Search, ShoppingCart, MenuIcon } from "../../icons";
+import { ShoppingCart, MenuIcon } from "../../icons";
 import { selectItems } from "../slices/basketSlice";
+import { allItems } from "../constants";
+import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -19,6 +22,16 @@ const Header = () => {
     }
   };
 
+  const ref = useRef();
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    document.body.addEventListener("click", (e) => {
+      if (e.target.contains(ref.current)) {
+        showAll && setShowAll(false);
+      }
+    });
+  }, [ref, showAll]);
   return (
     <header>
       <div className="flex items-center bg-amazon_blue p-1 flex-grow">
@@ -31,23 +44,64 @@ const Header = () => {
             height={40}
             src="/amazon-png-logo-vector-1.png"
             alt="amazon/logo"
-            className="cursor-pointer p-4"
+            className="cursor-pointer p-4 hidden sm:inline-block" // hide the logo on mobile
+          />
+          <Image
+            width={290}
+            height={50}
+            src="/amazon-png-logo-vector-1.png"
+            alt="amazon/logo"
+            className="cursor-pointer p-4 sm:hidden" // show the smaller logo on mobile
           />
         </div>
-        <form
-          onSubmit={handleSearch}
-          className="flex items-center rounded-md h-10 flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500"
-        >
-          <input
-            className="p-2 h-full w-full md:w-auto flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button type="submit">
-            <Search className="h-12 p-4" />
-          </button>
-        </form>
+        <div className="flex items-center w-full">
+          <form
+            onSubmit={handleSearch}
+            className="flex items-center rounded-md h-10 flex-grow bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md"
+          >
+            <div className="hidden lg:inline-flex h-10 relative">
+              <span
+                onClick={() => setShowAll(!showAll)}
+                className="w-14 h-full bg-gray-200 hover:bg-gray-300 border-2 cursor-pointer duration-300 text-sm text-amazon_blue font-titleFont flex items-center justify-center rounded-tl-md rounded-bl-md"
+              >
+                All{" "}
+                <span>
+                  <ArrowDropDownOutlinedIcon />
+                </span>
+              </span>
+              {showAll && (
+                <div>
+                  <ul
+                    ref={ref}
+                    className="absolute w-56 h-80 top-10 left-0 overflow-y-scroll overflow-x-hidden bg-white border-[1px] border-amazon_blue text-black p-2 flex flex-col gap-1 z-50"
+                  >
+                    {allItems.map((item) => (
+                      <li
+                        className="text-sm tracking-wide font-titleFont border-b-[1px] border-b-transparent hover:border-b-amazon_blue cursor-pointer duration-200"
+                        key={item._id}
+                      >
+                        {item.title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            <input
+              className="p-2 h-full w-full lg:w-auto flex-grow flex-shrink focus:outline-none px-4"
+              type="text"
+              placeholder="Search Amazon"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="w-10 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md"
+            >
+              <SearchIcon />
+            </button>
+          </form>
+        </div>
 
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
           <div
@@ -65,7 +119,7 @@ const Header = () => {
             onClick={() => router.push("/checkout")}
             className="link relative flex items-center"
           >
-            <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full font-bold">
+            <span className="absolute text-xs top-0 left-6 w-4 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center">
               {items.length}
             </span>
             <ShoppingCart className="h-10 text-white" />

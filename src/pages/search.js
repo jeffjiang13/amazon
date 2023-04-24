@@ -4,6 +4,7 @@ import ProductFeed from "../components/ProductFeed";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Banner from "../components/Banner";
+import Footer from "../components/footer/Footer"
 
 export async function getServerSideProps(context) {
   const { query } = context.query;
@@ -54,6 +55,7 @@ function Search({ products }) {
       <main className="max-w-screen-2xl mx-auto">
         {products.length > 0 && <ProductFeed products={products} />}
       </main>
+      <Footer />
     </motion.div>
   );
 }
