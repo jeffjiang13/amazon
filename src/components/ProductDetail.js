@@ -7,7 +7,7 @@ import { StarIcon } from "../../icons";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 
-function ProductDetail({ product }) {
+function ProductDetail({ product, onImageClick, rating }) {
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
@@ -50,12 +50,13 @@ function ProductDetail({ product }) {
           width={400}
           height={400}
           className="object-contain"
+          onClick={onImageClick}
         />
       </div>
       <div className="flex flex-col mt-5 md:mt-0 md:mx-10">
         <h4 className="font-bold text-lg mb-4">{product.title}</h4>
         <div className="flex">
-          {Array(product.rating)
+          {Array(rating)
             .fill()
             .map((_, i) => (
               <StarIcon key={i} className="h-5 text-yellow-500" />
