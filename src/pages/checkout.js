@@ -7,6 +7,7 @@ import Image from "next/image";
 import React from "react";
 import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import {
   selectItems,
@@ -91,8 +92,20 @@ const Checkout = () => {
         </div>
 
         <div className="flex flex-col bg-white p-10 shadow-md justify-center">
+
+
+
           {items.length > 0 && (
             <>
+                  <p className="flex gap-2 items-start text-sm  text-green-700">
+                <span>
+                  <CheckCircleIcon className="bg-white text-green-700 rounded-full" />
+                </span>
+                Your order qualifies for FREE Shipping. Choose this option at
+                checkout. See details....
+              </p>
+              <br />
+              <br />
               <h2 className="whitespace-nowrap font-semibold">
                 Subtotal ({totalQuantity}{" "}
                 {totalQuantity === 1 ? "item" : "items"}):
