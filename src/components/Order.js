@@ -24,7 +24,7 @@ const Order = ({ id, amount, amountShipping, items, timeStamp, images }) => {
           </p>
         </div>
         <p className="text-sm whitespace-nowrap sm:text-xl self-end flex-1 text-right text-blue-500">
-          {items.length} items
+          {items.length} {items.length === 1 ? "item" : "items"}
         </p>
         <p className="absolute top-2 right-2 w-40 lg:w-72 truncate text-xs whitespace-nowrap">
           ORDER # {id}
