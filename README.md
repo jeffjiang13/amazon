@@ -5,7 +5,7 @@
 
   # Amazon Clone
 
-<img src="public/readme.png" width='400' alt="logo" />
+<img src="public/readme.png" alt="logo" />
 
  <br />
   <p>
