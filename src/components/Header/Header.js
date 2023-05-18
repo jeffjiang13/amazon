@@ -60,7 +60,7 @@ const Header = () => {
           <div className="hidden md:inline-flex headerHover text-white">
             <LocationOnOutlinedIcon />
             <p className="flex flex-col text-xs text-lightText font-light">
-              Hello{" "}
+            {session ? `Hello, ${session?.user?.name}` : "Hello, guest"}
               <span className="text-sm font-semibold -mt-1 text-whiteText w-max">
                 Select your address
               </span>
