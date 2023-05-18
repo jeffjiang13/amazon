@@ -9,7 +9,7 @@
 
  <br />
   <p>
-Amazon clone (ReactJS, Webhooks, complete Stripe Payments Checkout, Cloud Firestore database, NextAuth, Redux, Google Authentication, Add to Basket Functionality, Tailwind CSS)
+
   </p>
   <br />
 <h3>
@@ -45,15 +45,24 @@ This project, deployed on Vercel, exemplifies the capabilities of Next.js combin
 
 
 # Features
-- Next auth/google auth - sign in
+- sign in with Google
 - Add to cart and remove from cart
 - Detail page with image modal
 - Complete Stripe Payments Checkout
+- Responsive design
+- functional search bar plus search page
+- Sidebar menu
+- Offers sidebar menu
+-
+
+# Tools
+- Next.js
+- React
+- Next auth/google auth
 - Cloud Firestore database
 - Webhooks
 - Redux
 - Tailwind CSS
-- Responsive design
 - Deployed on Vercel
 
 
