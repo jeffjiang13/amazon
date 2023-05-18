@@ -3,12 +3,13 @@
  <br />
   <img src="public/amazon-png-logo-vector-1.png" width='400' alt="logo" />
 
-  # Amazon 2.0 with NEXT.JS!
+  # Amazon Clone
 
+<img src="public/readme.png" width='400' alt="logo" />
 
  <br />
   <p>
-Amazon 2.0 with NEXT.JS! (ReactJS, Webhooks, complete Stripe Payments Checkout, Cloud Firestore database, NextAuth, Redux, Google Authentication, Add to Basket Functionality, Tailwind CSS)
+Amazon clone (ReactJS, Webhooks, complete Stripe Payments Checkout, Cloud Firestore database, NextAuth, Redux, Google Authentication, Add to Basket Functionality, Tailwind CSS)
   </p>
   <br />
 <h3>
@@ -22,6 +23,25 @@ Amazon 2.0 with NEXT.JS! (ReactJS, Webhooks, complete Stripe Payments Checkout, 
 
 
 <a href="https://jeff-amazon.vercel.app/" target="_blank">![](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)</a>
+
+# About
+Welcome to the Amazon Clone project! This project is a comprehensive replication of the renowned Amazon e-commerce platform, developed using a myriad of modern web development technologies. It is designed to showcase the potential and flexibility of these technologies when integrated together, and to provide a practical example of their application.
+
+The Amazon Clone incorporates several features typical of an e-commerce platform:
+
+User Authentication: Leveraging NextAuth and Google Authentication, users can securely sign in to the platform to access personalized features.
+
+Shopping Cart Functionality: Users can add items to their cart and review these items before purchase. They can also remove items from the cart if they change their minds.
+
+Detailed Product Pages: Each product has its own detail page, complete with an image modal for a closer look at the product.
+
+Complete Checkout Process: Integrated with Stripe Payments, the platform supports a seamless and secure checkout process for purchasing items in the user's cart.
+
+Real-time Database: The platform uses Google's Cloud Firestore as a real-time database for storing and retrieving data, ensuring that product details and user data are always up-to-date.
+
+Responsive Design: Tailwind CSS has been utilized to ensure a responsive and aesthetically pleasing design that provides a positive user experience on any device.
+
+This project, deployed on Vercel, exemplifies the capabilities of Next.js combined with Redux Toolkit, and provides a solid starting point for anyone looking to learn more about these technologies or seeking a foundation for a custom e-commerce platform. Happy coding!
 
 
 # Features
