@@ -44,16 +44,16 @@ Responsive Design: Tailwind CSS has been utilized to ensure a responsive and aes
 This project, deployed on Vercel, exemplifies the capabilities of Next.js combined with Redux Toolkit, and provides a solid starting point for anyone looking to learn more about these technologies or seeking a foundation for a custom e-commerce platform. Happy coding!
 
 
-# Features
-- sign in with Google
-- Add to cart and remove from cart
-- Detail page with image modal
-- Complete Stripe Payments Checkout
-- Responsive design
-- functional search bar plus search page
-- Sidebar menu
-- Offers sidebar menu
--
+## :sparkles: Features
+:heavy_check_mark: sign in with Google\
+:heavy_check_mark: Add to cart and remove from cart\
+:heavy_check_mark: Detail page with image modal\
+:heavy_check_mark: Complete Stripe Payments Checkout\
+:heavy_check_mark: Responsive design\
+:heavy_check_mark: functional search bar plus search page\
+:heavy_check_mark: Sidebar menu\
+:heavy_check_mark:  Offers sidebar menu
+
 
 # Tools
 - Next.js
@@ -82,16 +82,21 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
+
 ```bash
-npx create-next-app --example with-redux-toolkit with-redux-toolkit-app
-# or
-yarn create next-app --example with-redux-toolkit with-redux-toolkit-app
+# Clone this project
+$ git clone https://github.com/jeffjiang13/amazon
+
+# Access
+$ cd amazon
+
+# Install dependencies
+$ yarn
+
+# Run the project
+$ yarn start
+
+# The server will initialize in the <http://localhost:3000>
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-### TypeScript Setup (optional)
-
-If you haven't already added [TypeScript](https://www.typescriptlang.org/) to your project, follow the [steps in the Next.js documentation](https://nextjs.org/docs/basic-features/typescript). If you are new to TypeScript, go through the Next.js [learning lesson on TypeScript](https://nextjs.org/learn/excel/TypeScript).
-
-Once TypeScript is added, follow the instructions given on the Redux Toolkit [documentation](https://redux-toolkit.js.org/tutorials/TypeScript) to set up and use Redux Toolkit and React-Redux with TypeScript
