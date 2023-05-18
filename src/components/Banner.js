@@ -12,16 +12,24 @@ function Banner() {
         showThumbs={false}
         interval={5000}
       >
-        <div>
-          <img loading="lazy" src="https://links.papareact.com/gi1" />
+             <div>
+          <img loading="lazy" src="https://netbasequid.com/wp-content/uploads/PrimeDay2022.png" />
+        </div>
+             <div>
+          <img loading="lazy" src="https://www.thesun.co.uk/wp-content/uploads/2022/09/PR_AMZ_PEAS_22_STATIC_3000x1464_UK.jpg" />
         </div>
         <div>
-          <img loading="lazy" src="https://links.papareact.com/6ff" />
+          <img loading="lazy" src="https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/10/2536848-T1-CLONE-Market-Update-The-Best-Beauty-Health-and-Wellness-Deals-to-Shop-on-Amazon-Prime-Day-2022-1296x728-Header.jpg" />
+        </div>
+        <div>
+          <img loading="lazy" src="https://uploads-ssl.webflow.com/5fd48c67bfe96103e696a791/62e9213361892305a9c37d7e_YfzFEoNMrINjO3sUjPlEJP6-3oiQxO0x7AU19DdE8euIZGAuYVKfsEWBosU1daWoVYjdBgqJNBvubz5wWH98leo0Cr4-zds2skWwyLslla8LRx9DMAQdJvGqSPeZ5THBB-6ASYoHqeazCBPwhy-k1w0.jpeg" />
         </div>
         <div>
           <img loading="lazy" src="https://links.papareact.com/7ma" />
         </div>
       </Carousel>
+      <div style={{ height: "50%" }}></div> {/* Add this line */}
+
     </div>
   );
 }

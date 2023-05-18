@@ -26,8 +26,11 @@ export default function Home({ products }) {
       <Header />
       <main className="max-w-screen-2xl mx-auto">
         <Banner />
+        <div className="absolute top-0 left-0 w-full" style={{ marginTop: "50%" }}>
         <ProductFeed products={products} />
         <Footer />
+
+        </div>
       </main>
     </motion.div>
   );

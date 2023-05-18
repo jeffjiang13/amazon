@@ -6,6 +6,12 @@ import Currency from "react-currency-formatter";
 import { StarIcon } from "../../icons";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
+import Divider from "@material-ui/core/Divider";
+
+import ProductDeliveryOptions from "./ProductDeliveryOptions";
+import Offers from "./Offers";
+import Typography from "@material-ui/core/Typography";
+import { TbDiscount2 } from "react-icons/tb";
 
 function ProductDetail({ product, onImageClick, rating }) {
   const dispatch = useDispatch();
@@ -63,7 +69,9 @@ function ProductDetail({ product, onImageClick, rating }) {
             ))}
         </div>
         <p className="text-xs my-2 line-clamp-3">{product.description}</p>
-        <Currency quantity={product.price} currency="USD" />
+        <div className="text-2xl">
+        <strong><Currency quantity={product.price} currency="USD" /></strong>
+        </div>
         {product.hasPrime && (
           <div className="flex items-center space-x-2">
             <img
@@ -75,6 +83,19 @@ function ProductDetail({ product, onImageClick, rating }) {
             <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
           </div>
         )}
+        <Divider className="my-2" />
+        <div className="flex flex-col sm:flex-row items-center">
+          <TbDiscount2 className="w-10 h-10 text-red-500 ml-3" />
+          <Typography className="ml-2 mt-2 sm:mt-0">
+            <strong className="ml-1">Offers</strong>
+          </Typography>
+        </div>
+        <div className="flex flex-col sm:flex-row my-auto justify-self-end p-4">
+          <Offers />
+        </div>
+        <Divider className="my-2" />
+        <ProductDeliveryOptions />
+
         <div className="flex my-auto justify-self-end">
           <motion.button
             whileHover={{ scale: 1.02 }}
