@@ -1,17 +1,26 @@
-import { useRouter } from 'next/router';
-import Header from '../../components/Header/Header';
-import ProductDetail from '../../components/ProductDetail';
+import { useRouter } from "next/router";
+import Header from "../../components/Header/Header";
+import ProductDetail from "../../components/ProductDetail";
 import { FaArrowLeft } from "react-icons/fa";
 import Head from "next/head";
 import Footer from "../../components/footer/Footer";
 import { Dialog, Transition } from "@headlessui/react";
 import { useState, Fragment } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import AddBanner1 from "../../Assets/images/amazonAddBanner1.jpg";
+import AddBanner2 from "../../Assets/images/amazonAddBanner2.jpg";
+import AddBanner3 from "../../Assets/images/amazonAddBanner3.jpg";
+import AddBanner4 from "../../Assets/images/amazonAddBanner4.jpg";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export async function getServerSideProps(context) {
   const { pid } = context.query;
-  const product = await fetch(
-    `https://fakestoreapi.com/products/${pid}`
-  ).then((res) => res.json());
+
+  const product = await fetch(`https://fakestoreapi.com/products/${pid}`).then(
+    (res) => res.json()
+  );
 
   return {
     props: {
@@ -19,10 +28,12 @@ export async function getServerSideProps(context) {
     },
   };
 }
+const banners = [AddBanner1, AddBanner2, AddBanner3, AddBanner4];
 
 function ProductPage({ product }) {
   const router = useRouter();
-  const rating = parseInt(router.query.rating, 10) || Math.floor(product.rating.rate);
+  const rating =
+    parseInt(router.query.rating, 10) || Math.floor(product.rating.rate);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeModal = () => setIsModalOpen(false);
@@ -41,20 +52,45 @@ function ProductPage({ product }) {
       </Head>
       <Header />
       <div className="mx-auto py-6">
+        <Carousel showThumbs={false} autoPlay infiniteLoop showStatus={false}>
+          {banners.map((banner, index) => (
+            <a
+              href="https://www.primevideo.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div key={index}>
+                <Image
+                  src={banner}
+                  alt={`Banner ${index + 1}`}
+                  width={500}
+                  height={1}
+                />
+              </div>
+            </a>
+          ))}
+        </Carousel>
+
         <button className="inline-flex" onClick={() => router.back()}>
           <FaArrowLeft />
         </button>
         <br />
         <span className="text-gray-300">|</span>
-        <h3 className="font-bold text-2xl">
-          {product.category}
-        </h3>
+        <h3 className="font-bold text-2xl">{product.category}</h3>
         <br />
-        <ProductDetail product={product} onImageClick={openModal}  rating={rating} />
+        <ProductDetail
+          product={product}
+          onImageClick={openModal}
+          rating={rating}
+        />
         <Footer />
 
         <Transition show={isModalOpen} as={Fragment}>
-          <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={closeModal}>
+          <Dialog
+            as="div"
+            className="fixed inset-0 z-10 overflow-y-auto"
+            onClose={closeModal}
+          >
             <div className="min-h-screen px-4 text-center image-modal">
               <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
 
@@ -74,12 +110,19 @@ function ProductPage({ product }) {
                 leaveTo="opacity-0 scale-95"
               >
                 <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                  <Dialog.Title as="h3" className=" absolute text-lg font-medium leading-6 text-gray-900">
+                  <Dialog.Title
+                    as="h3"
+                    className=" absolute text-lg font-medium leading-6 text-gray-900"
+                  >
                     {product.title}
                   </Dialog.Title>
 
                   <div className="mt-2">
-                    <img src={product.image} alt={product.title} className="w-full" />
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="w-full"
+                    />
                   </div>
 
                   <div className="mt-4">

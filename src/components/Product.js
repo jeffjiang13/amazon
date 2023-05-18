@@ -94,8 +94,8 @@ const Product = ({
       {hasPrime && (
         <div className="flex items-center mt-auto">
           <img
-            className="w-12"
-            src="https://links.papareact.com/fdw"
+            className="w-14 h-6"
+            src="https://www.nicepng.com/png/detail/115-1159983_amazon-prime-logo-prime-amazon.png"
             alt=""
           />
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>

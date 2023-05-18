@@ -88,3 +88,39 @@ export function Search(props) {
       </svg>
     );
   }
+  export function LanguageIcon(props) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        {...props}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-6 0a3 3 0 003-3V7a3 3 0 00-6 0v6a3 3 0 003 3z"
+        />
+      </svg>
+    );
+  }
+  export function FlagIcon(props) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        {...props}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M4 6a2 2 0 012-2h14M4 6a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l2-2m-2 2H6a2 2 0 00-2 2v3a2 2 0 002 2h6m6 0a2 2 0 002 2v3a2 2 0 01-2 2H6a2 2 0 01-2-2v-3a2 2 0 012-2h14z"
+        />
+      </svg>
+    );
+  }

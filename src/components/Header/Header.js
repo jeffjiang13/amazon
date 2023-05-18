@@ -4,14 +4,14 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
+import ReactCountryFlag from "react-country-flag";
 
-import { ShoppingCart, MenuIcon } from "../../../icons";
+import { ShoppingCart, MenuIcon, FlagIcon, LanguageIcon } from "../../../icons";
 import { selectItems } from "../../slices/basketSlice";
 import { allItems } from "../../constants";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import HeaderBottom from "./HeaderBottom";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-
 const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
@@ -23,6 +23,7 @@ const Header = () => {
       router.push(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
+  const [languageMenuVisible, setLanguageMenuVisible] = useState(false);
 
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
@@ -34,6 +35,15 @@ const Header = () => {
       }
     });
   }, [ref, showAll]);
+  useEffect(() => {
+    const hideMenu = () => setLanguageMenuVisible(false);
+
+    window.addEventListener("click", hideMenu);
+
+    return () => {
+      window.removeEventListener("click", hideMenu);
+    };
+  }, []);
   return (
     <div className="sticky top-0 z-50">
       <header>
@@ -60,7 +70,7 @@ const Header = () => {
           <div className="hidden md:inline-flex headerHover text-white">
             <LocationOnOutlinedIcon />
             <p className="flex flex-col text-xs text-lightText font-light">
-            {session ? `Hello, ${session?.user?.name}` : "Hello, guest"}
+              {session ? `Hello, ${session?.user?.name}` : "Hello, guest"}
               <span className="text-sm font-semibold -mt-1 text-whiteText w-max">
                 Select your address
               </span>
@@ -114,13 +124,53 @@ const Header = () => {
               </button>
             </form>
           </div>
+          <div className="relative">
+            <div className="relative" onClick={(e) => e.stopPropagation()}>
+              <div
+                className="flex items-center cursor-pointer text-white"
+                onClick={() => setLanguageMenuVisible(!languageMenuVisible)}
+              >
+                <ReactCountryFlag countryCode="US" svg className="ml-5 mr-1" /> <strong>EN</strong>
+                <ArrowDropDownOutlinedIcon className="" />
+              </div>
+              {/* ... rest of the code ... */}
+            </div>
+            {languageMenuVisible && (
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                  >
+                    English (US)
+                  </a>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                  >
+                    Español (US)
+                  </a>
+                  {/* Add more languages as necessary */}
+                </div>
+              </div>
+            )}
+          </div>
 
           <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
             <div
               onClick={() => (session ? signOut() : signIn())}
               className="link"
             >
-              <p>{session ? `Hello, ${session?.user?.name}` : "Sign In"}</p>
+              <p>
+                {session ? `Hello, ${session?.user?.name}` : "Hello, sign In"}
+              </p>
               <p className="font-extrabold md:text-sm">Account & List</p>
             </div>
             <div onClick={() => router.push("/orders")} className="link">
