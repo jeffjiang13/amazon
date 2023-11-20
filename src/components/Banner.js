@@ -13,7 +13,7 @@ function Banner() {
         interval={5000}
       >
              <div>
-          <img loading="lazy" src="https://netbasequid.com/wp-content/uploads/PrimeDay2022.png" />
+          <img loading="lazy" src="https://m.media-amazon.com/images/G/01/FireTV/Inline/5_BackgroundImageNotApproved._CB666803270_._TTW_.jpg" />
         </div>
              <div>
           <img loading="lazy" src="https://www.thesun.co.uk/wp-content/uploads/2022/09/PR_AMZ_PEAS_22_STATIC_3000x1464_UK.jpg" />
