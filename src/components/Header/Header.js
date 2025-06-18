@@ -55,14 +55,14 @@ const Header = () => {
             <Image
               width={220}
               height={50}
-              src="/amazon-png-logo-vector-1.png"
+              src="/logo1.png"
               alt="amazon/logo"
               className="cursor-pointer p-4 hidden sm:inline-block" // hide the logo on mobile
             />
             <Image
               width={320}
               height={50}
-              src="/amazon-png-logo-vector-1.png"
+              src="/logo1.png"
               alt="amazon/logo"
               className="cursor-pointer p-4 sm:hidden" // show the smaller logo on mobile
             />
