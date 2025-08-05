@@ -103,3 +103,4 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 
 
 ## This project is for educational purposes only and is not affiliated with Amazon in any way. It is a personal project created to demonstrate the capabilities of modern web development technologies.
+ thank you for visiting!
