@@ -100,3 +100,6 @@ $ yarn start
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+
+## This project is for educational purposes only and is not affiliated with Amazon in any way. It is a personal project created to demonstrate the capabilities of modern web development technologies.
