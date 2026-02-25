@@ -1,0 +1,65 @@
+[33mcommit 795cb21c015da43d9acbbbb299ed9dafd7cc9801[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Jeff Jiang <jeff.jiang13@gmail.com>
+Date:   Tue Feb 24 20:22:57 2026 -0500
+
+    updated readme
+
+[1mdiff --git a/tall git-filter-repo b/tall git-filter-repo[m
+[1mnew file mode 100644[m
+[1mindex 0000000..224279e[m
+[1m--- /dev/null[m
+[1m+++ b/tall git-filter-repo[m	
+[36m@@ -0,0 +1,53 @@[m
+[32m+[m[32m[33mcommit ffabc5d588628834f2e3622d32fc0c90c09f609e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Tue Feb 24 20:18:39 2026 -0500[m
+[32m+[m
+[32m+[m[32m    updated readme[m
+[32m+[m
+[32m+[m[32m[33mcommit 7049c5646b7ca1c0c86ff207a7e2fbb37112a86d[m[33m ([m[mrefs/rewritten/onto[m[33m)[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Tue Feb 24 20:14:19 2026 -0500[m
+[32m+[m
+[32m+[m[32m    updated readme[m
+[32m+[m
+[32m+[m[32m[33mcommit c21c2aad849a0a9954ee3143442f73b9a035541a[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Tue Feb 24 20:09:14 2026 -0500[m
+[32m+[m
+[32m+[m[32m    Remove secrets from env example[m
+[32m+[m
+[32m+[m[32m[33mcommit 480b33ec61c6aabafe899e657e24fdd7c6d43c23[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Tue Feb 24 20:05:34 2026 -0500[m
+[32m+[m
+[32m+[m[32m    updated readme[m
+[32m+[m
+[32m+[m[32m[33mcommit 8d53053a7acfce6549660f1b1de445be4dc444e8[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Tue Feb 24 20:04:14 2026 -0500[m
+[32m+[m
+[32m+[m[32m    updated readme[m
+[32m+[m
+[32m+[m[32m[33mcommit 590ec010063cebe68c2806a9385c8d16b403f60f[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Tue Feb 24 19:59:11 2026 -0500[m
+[32m+[m
+[32m+[m[32m    updated readme[m
+[32m+[m
+[32m+[m[32m[33mcommit 69ef6a5984df1a6b9aa99dfabf7652db55082fbe[m[m
+[32m+[m[32mAuthor: Jeff Jiang <107065766+jeffjiang13@users.noreply.github.com>[m
+[32m+[m[32mDate:   Thu Mar 23 18:07:24 2023 -0400[m
+[32m+[m
+[32m+[m[32m    Delete .env[m
+[32m+[m
+[32m+[m[32m[33mcommit 3ede10f34ba20bc2124b4b8ff96d470d9e430d24[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Thu Mar 23 18:06:35 2023 -0400[m
+[32m+[m
+[32m+[m[32m    first commit[m
+[32m+[m
+[32m+[m[32m[33mcommit 9a8434be6b537ec71d8223fc256641a24bd132d1[m[m
+[32m+[m[32mAuthor: Jeff Jiang <jeff.jiang13@gmail.com>[m
+[32m+[m[32mDate:   Thu Mar 23 18:04:12 2023 -0400[m
+[32m+[m
+[32m+[m[32m    first commit[m
